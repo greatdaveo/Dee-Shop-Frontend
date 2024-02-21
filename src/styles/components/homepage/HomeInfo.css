@@ -1,0 +1,15 @@
+.home-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: rgb(22, 22, 21);
+    color: var(--text-color);
+    align-content: center;
+    padding: 1rem 3rem;
+    gap: 3rem;
+}
+
+.home-info-data > h3 {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;    
+}

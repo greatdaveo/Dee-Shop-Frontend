@@ -1,0 +1,13 @@
+a h1{
+    color: var(--primary-color);
+}
+
+h1 svg {
+    width: 2.5rem;
+    height: 3rem;
+}
+
+ a span {
+    color: var(--text-color);
+    font-size: 2rem;
+}

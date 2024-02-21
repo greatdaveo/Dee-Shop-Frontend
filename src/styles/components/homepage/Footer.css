@@ -1,0 +1,23 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  background: rgb(22, 22, 21);
+  color: var(--primary-color);
+}
+
+.footer-container > :nth-child(2) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5rem;
+}
+
+.footer-container li a {
+    color: var(--text-color);
+}
+
+.rights h4{
+  text-align: center;
+  padding: 1rem;
+  background: var(--primary-color);
+}

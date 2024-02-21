@@ -6,19 +6,6 @@ nav {
   /* background: black; */
 }
 
-nav a h1{
-    color: var(--primary-color);
-}
-
-nav h1 svg {
-    width: 2.5rem;
-    height: 3rem;
-}
-
-nav a span {
-    color: var(--text-color);
-    font-size: 2rem;
-}
 
 nav > :nth-child(2) a {
   color: var(--text-color);

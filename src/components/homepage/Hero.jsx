@@ -1,5 +1,5 @@
-import "../styles/components/Hero.css";
-import NavBar from "./NavBar";
+import "../../styles/components/homepage/Hero.css";
+import NavBar from "../../components/homepage/NavBar";
 
 const Hero = () => {
   return (
