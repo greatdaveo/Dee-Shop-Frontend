@@ -1,0 +1,52 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 3rem;
+  /* background: black; */
+}
+
+nav a h1{
+    color: var(--primary-color);
+}
+
+nav h1 svg {
+    width: 2.5rem;
+    height: 3rem;
+}
+
+nav a span {
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+nav > :nth-child(2) a {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+nav .login {
+  background: inherit;
+  border: none;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+nav .signup {
+  font-weight: 700;
+  border: none;
+  background: inherit;
+  color: var(--text-color);
+}
+
+nav .cart {
+  border: none;
+  background: inherit;
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+nav .cart svg {
+    width: 1rem;
+    height: 1.5rem;
+}
