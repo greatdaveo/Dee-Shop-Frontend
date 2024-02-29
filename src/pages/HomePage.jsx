@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { productData } from "../data/data";
 import CarouselItems from "../components/carousel/CarouselItems";
 import CarouselProducts from "../components/carousel/CarouselProducts";
+import ProductCategory from "../components/homepage/ProductCategory";
 
 const HomePage = () => {
   const products = productData.map((data, i) => (
@@ -26,7 +27,7 @@ const HomePage = () => {
       <LatestProducts />
 
       <CarouselProducts products={products} />
-      <h1>Home Page</h1>
+      <ProductCategory />
       <Footer />
     </div>
   );

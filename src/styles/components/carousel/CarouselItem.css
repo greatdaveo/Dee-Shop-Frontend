@@ -25,6 +25,8 @@
 
 .carousal-item .price {
   margin: 0rem auto;
+  color: red;
+  font-weight: 500;
 }
 
 .carousal-item .name {
