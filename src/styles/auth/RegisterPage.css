@@ -1,0 +1,35 @@
+.register .nav {
+  background: #2e2d2d;
+}
+
+.form-cover {
+  background: var(--primary-color);
+  width: 50vw;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 2.5rem 3rem;
+  margin-top: 1rem;
+
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register form input {
+  padding: 1rem;
+}
+
+.register .btn {
+    padding: 0.8rem;
+    font-weight: bold;
+    background: blue;
+    border: none;
+    color: white;
+}
+
+.form-cover a {
+    color: red;
+}

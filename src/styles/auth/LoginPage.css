@@ -1,0 +1,34 @@
+.login .nav {
+  background: #2e2d2d;
+}
+
+.form-cover {
+  background: var(--primary-color);
+  width: 50vw;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 3rem;
+  margin-top: 3rem;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login form input {
+  padding: 1rem;
+}
+
+.login .btn {
+    padding: 0.8rem;
+    font-weight: bold;
+    background: blue;
+    border: none;
+    color: white;
+}
+
+.form-cover a {
+    color: red;
+}
