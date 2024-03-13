@@ -4,11 +4,18 @@ import HomePage from "./pages/HomePage";
 import SharedLayout from "./components/SharedLayout";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  axios.defaults.withCredentials = true;
+
   return (
     <div>
       <BrowserRouter>
+        <ToastContainer />
+
         <Routes>
           <Route path="/" element={<SharedLayout />} />
           <Route index element={<HomePage />} />
