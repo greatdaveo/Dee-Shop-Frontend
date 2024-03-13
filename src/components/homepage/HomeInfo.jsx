@@ -34,7 +34,7 @@ const HomeInfo = () => {
   return (
     <div className="home-info">
       {data.map((info, i) => (
-        <div className="home-info-data">
+        <div className="home-info-data" key={i}>
           <h3 className="heading">
             <i className="icon">{info.icon}</i> {info.heading}
           </h3>
