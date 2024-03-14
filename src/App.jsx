@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loginStatusSlice } from "./redux/features/auth/authSlice";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,0 +1,29 @@
+.profile-container .nav {
+    background: #000;
+}
+
+.profile-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+    width: 55vw;
+        
+
+}
+
+.profile-container form input {
+    padding: 0.5rem;
+    width: 50vw;
+}
+
+.profile-container form .btn {
+    padding: 1rem;
+    width: 53vw;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    background: blue;
+    color: white;
+    border: none;
+}

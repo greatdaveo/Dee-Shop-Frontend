@@ -1,0 +1,14 @@
+.page-menu nav {
+    background: var(--primary-color);
+    margin-top: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.page-menu nav a {
+    color: black;
+    font-weight: 600;
+}
