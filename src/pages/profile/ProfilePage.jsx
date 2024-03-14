@@ -3,7 +3,11 @@ import "../../styles/pages/profile/ProfilePage.css";
 import NavBar from "../../components/homepage/NavBar";
 import PageMenu from "../../components/page_menu/PageMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserSlice } from "../../redux/features/auth/authSlice";
+import {
+  getUserSlice,
+  updateUserSlice,
+} from "../../redux/features/auth/authSlice";
+import Loader from "../../components/loader/loader";
 
 const ProfilePage = () => {
   const { isLoading, user } = useSelector((state) => state.auth);
@@ -39,12 +43,29 @@ const ProfilePage = () => {
     }
   }, [dispatch, user]);
 
-  const handleImageChange = () => {
+  const handleImageChange = () => {};
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfileData({ ...profileData, [name]: value });
   };
-  const handleInputChange = () => {};
-  const handleSubmit = () => {};
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      name: profileData.name,
+      phone: profileData.phone,
+      address: {
+        address: profileData.address,
+        state: profileData.state,
+        country: profileData.country,
+      },
+    };
+
+    await dispatch(updateUserSlice(userData));
+    // console.log("User Data: ", userData);
+  };
 
   return (
     <div className="profile-container">
@@ -57,6 +78,7 @@ const ProfilePage = () => {
       </div>
 
       <section>
+        {isLoading && <Loader />}
         <div></div>
 
         {!isLoading && (
@@ -79,17 +101,19 @@ const ProfilePage = () => {
                   name="name"
                   value={profileData.name}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
               <div>
-                <label id="email">Name:</label> <br />
+                <label id="email">Email:</label> <br />
                 <input
                   type="text"
                   name="email"
                   value={profileData.email}
                   onChange={handleInputChange}
                   disabled
+                  required
                 />
               </div>
 
@@ -100,6 +124,7 @@ const ProfilePage = () => {
                   name="phone"
                   value={profileData.phone}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
@@ -110,6 +135,7 @@ const ProfilePage = () => {
                   name="address"
                   value={profileData?.address?.address}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
@@ -120,6 +146,7 @@ const ProfilePage = () => {
                   name="state"
                   value={profileData?.address?.state}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
@@ -130,10 +157,11 @@ const ProfilePage = () => {
                   name="country"
                   value={profileData?.address?.country}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
-              <button className="btn">SAVE</button>
+              <button className="btn">UPDATE PROFILE</button>
             </form>
           </div>
         )}
