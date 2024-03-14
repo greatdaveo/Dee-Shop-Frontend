@@ -18,9 +18,18 @@ const loginService = async (userData) => {
   return response.data
 }
 
+// To log out the user
+const logoutService = async () => {
+  const response = await axios.get(API_URL + "logout");
+  return response.data.message;
+}
+
+
+
 const authService = {
   registerService,
-  loginService
+  loginService,
+  logoutService,
 };
 
 export default authService;

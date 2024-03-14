@@ -28,12 +28,29 @@ export const registerSlice = createAsyncThunk(
   }
 );
 
-// To LOgin the user
+// To Login the user
 export const loginSlice = createAsyncThunk(
   "auth/login",
   async (userData, thunkAPI) => {
     try {
       return await authService.loginService(userData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// To Logout the user
+export const logoutSlice = createAsyncThunk(
+  "auth/logout",
+  async (_, thunkAPI) => {
+    try {
+      return await authService.logoutService();
     } catch (error) {
       const message =
         (error.message && error.response.data && error.message.data.message) ||
@@ -59,7 +76,7 @@ const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      // For the User Registeration
+      // For the User Registration
       .addCase(registerSlice.pending, (state) => {
         state.isLoading = true;
       })
@@ -91,7 +108,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
         toast.success("You just logged in!");
-        console.log(action.payload)
+        console.log(action.payload);
       })
 
       .addCase(loginSlice.rejected, (state, action) => {
@@ -99,6 +116,27 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
+        toast.success(action.payload);
+      })
+
+      // For the User Logout
+      .addCase(logoutSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(logoutSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = false;
+        state.user = null;
+        toast.success(action.payload);
+        console.log(action.payload);
+      })
+
+      .addCase(logoutSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
         toast.success(action.payload);
       });
   },
