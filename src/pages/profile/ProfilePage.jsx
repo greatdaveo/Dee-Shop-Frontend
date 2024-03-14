@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/pages/profile/ProfilePage.css";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 import NavBar from "../../components/homepage/NavBar";
 import PageMenu from "../../components/page_menu/PageMenu";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,8 @@ const ProfilePage = () => {
   };
 
   const [profileData, setProfileData] = useState(initialState);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const dispatch = useDispatch();
 
   // To fetch the user data from the backend
@@ -43,7 +46,10 @@ const ProfilePage = () => {
     }
   }, [dispatch, user]);
 
-  const handleImageChange = () => {};
+  const handleImageChange = (e) => {
+    setProfileImage(e.target.files[0]);
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,6 +73,8 @@ const ProfilePage = () => {
     // console.log("User Data: ", userData);
   };
 
+  const handleUploadPhoto = async () => {};
+
   return (
     <div className="profile-container">
       <div className="nav">
@@ -79,7 +87,21 @@ const ProfilePage = () => {
 
       <section>
         {isLoading && <Loader />}
-        <div></div>
+        <div className="profile-photo">
+          <div className="photo-preview">
+            <img
+              src={imagePreview === null ? user?.photo : imagePreview}
+              alt={profileData.name + "profile photo"}
+            />
+
+            <h3>Role: {profileData.role}</h3>
+            {imagePreview !== null && (
+              <button className="photo-btn" onClick={handleUploadPhoto}>
+                <AiOutlineCloudUpload size={18} /> Upload Photo
+              </button>
+            )}
+          </div>
+        </div>
 
         {!isLoading && (
           <div>
