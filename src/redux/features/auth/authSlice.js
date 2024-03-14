@@ -79,6 +79,57 @@ export const loginStatusSlice = createAsyncThunk(
   }
 );
 
+// To Get User Info
+export const getUserSlice = createAsyncThunk(
+  "auth/get-user",
+  async (_, thunkAPI) => {
+    try {
+      return await authService.getUserService();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// To Update the User  Profile
+export const updateUserSlice = createAsyncThunk(
+  "auth/update-profile",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.updateUserService(userData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// To Update User Photo
+export const updatePhotoSlice = createAsyncThunk(
+  "auth/update-photo",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.updatePhotoService(userData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -157,7 +208,7 @@ const authSlice = createSlice({
         toast.success(action.payload);
       })
 
-      // For the User Logout
+      // For the User Login Status
       .addCase(loginStatusSlice.pending, (state) => {
         state.isLoading = true;
       })
@@ -168,7 +219,7 @@ const authSlice = createSlice({
         state.isLoggedIn = action.payload;
         console.log("Fulfilled User Login Status:", action.payload);
         // When the token sent to the backend is not valid
-        if(action.payload.message === "invalid signature") {
+        if (action.payload.message === "invalid signature") {
           state.isLoggedIn = false;
         }
       })
@@ -178,6 +229,71 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         console.log("Rejected User Login Status:", action.payload);
+      })
+
+      // For the Get User
+      .addCase(getUserSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(getUserSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        console.log("Fulfilled getUser:", action.payload)  
+      })
+
+      .addCase(getUserSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        console.log("Rejected getUser:", action.payload);
+      })
+
+        // For Update the User Profile
+      .addCase(updateUserSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(updateUserSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("You have updated your profile!")
+        console.log("Fulfilled updateUser:", action.payload)  
+      })
+
+      .addCase(updateUserSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        console.log("Rejected updateUser:", action.payload);
+      })
+
+         // For Update the User Photo
+      .addCase(updatePhotoSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(updatePhotoSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("You have updated your profile!")
+        console.log("Fulfilled updatePhoto:", action.payload)  
+      })
+
+      .addCase(updatePhotoSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        console.log("Rejected updatePhoto:", action.payload);
       });
   },
 });
