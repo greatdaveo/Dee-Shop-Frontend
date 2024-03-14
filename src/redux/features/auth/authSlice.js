@@ -28,6 +28,23 @@ export const registerSlice = createAsyncThunk(
   }
 );
 
+// To LOgin the user
+export const loginSlice = createAsyncThunk(
+  "auth/login",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.loginService(userData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -42,7 +59,7 @@ const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      // User Register
+      // For the User Registeration
       .addCase(registerSlice.pending, (state) => {
         state.isLoading = true;
       })
@@ -56,6 +73,28 @@ const authSlice = createSlice({
       })
 
       .addCase(registerSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.success(action.payload);
+      })
+
+      // For the User Login
+      .addCase(loginSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(loginSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("You just logged in!");
+        console.log(action.payload)
+      })
+
+      .addCase(loginSlice.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

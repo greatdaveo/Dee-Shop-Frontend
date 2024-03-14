@@ -27,7 +27,7 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(name, email, password, confirmPassword);
+    // console.log(name, email, password, confirmPassword);
 
     if (!email || !password) return toast.error("All fields are required!");
     if (password.length < 6) {
