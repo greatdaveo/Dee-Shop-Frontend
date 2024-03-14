@@ -7,9 +7,19 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loginStatusSlice } from "./redux/features/auth/authSlice";
 
 function App() {
   axios.defaults.withCredentials = true;
+
+  const dispatch = useDispatch();
+
+  // This is to check if the user is logged in
+  useEffect(() => {
+    dispatch(loginStatusSlice());
+  }, [dispatch]);
 
   return (
     <div>

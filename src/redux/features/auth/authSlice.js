@@ -62,6 +62,23 @@ export const logoutSlice = createAsyncThunk(
   }
 );
 
+// For Login Status of the user
+export const loginStatusSlice = createAsyncThunk(
+  "auth/login-status",
+  async (_, thunkAPI) => {
+    try {
+      return await authService.loginStatusService();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -108,7 +125,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
         toast.success("You just logged in!");
-        console.log(action.payload);
+        // console.log(action.payload);
       })
 
       .addCase(loginSlice.rejected, (state, action) => {
@@ -130,7 +147,7 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.user = null;
         toast.success(action.payload);
-        console.log(action.payload);
+        // console.log(action.payload);
       })
 
       .addCase(logoutSlice.rejected, (state, action) => {
@@ -138,6 +155,29 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         toast.success(action.payload);
+      })
+
+      // For the User Logout
+      .addCase(loginStatusSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(loginStatusSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = action.payload;
+        console.log("Fulfilled User Login Status:", action.payload);
+        // When the token sent to the backend is not valid
+        if(action.payload.message === "invalid signature") {
+          state.isLoggedIn = false;
+        }
+      })
+
+      .addCase(loginStatusSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        console.log("Rejected User Login Status:", action.payload);
       });
   },
 });

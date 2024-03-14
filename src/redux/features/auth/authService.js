@@ -24,12 +24,17 @@ const logoutService = async () => {
   return response.data.message;
 }
 
-
+// To Get log in status of the user
+const loginStatusService = async () => {
+  const response = await axios.get(API_URL + "login-status");
+  return response.data;
+}
 
 const authService = {
   registerService,
   loginService,
   logoutService,
+  loginStatusService,
 };
 
 export default authService;
