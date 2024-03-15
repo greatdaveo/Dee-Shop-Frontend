@@ -6,9 +6,16 @@ import PageMenu from "../../components/page_menu/PageMenu";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getUserSlice,
+  updatePhotoSlice,
   updateUserSlice,
 } from "../../redux/features/auth/authSlice";
 import Loader from "../../components/loader/loader";
+import { toast } from "react-toastify";
+
+// For the Cloudinary implementation
+const cloud_name = import.meta.env.VITE_APP_CLOUD_NAME;
+const upload_preset = import.meta.env.VITE_APP_UPLOAD_PRESET;
+const CLOUDINARY_URL = import.meta.env.VITE_APP_CLOUDINARY_URL;
 
 const ProfilePage = () => {
   const { isLoading, user } = useSelector((state) => state.auth);
@@ -83,7 +90,41 @@ const ProfilePage = () => {
     // console.log("User Data: ", userData);
   };
 
-  const handleUploadPhoto = async () => {};
+  const handleUploadedPhoto = async (e) => {
+    e.preventDefault();
+    let imageURL;
+
+    try {
+      if (
+        profileImage !== null &&
+        (profileImage.type === "image/jpeg" ||
+          profileImage.type === "image/jpg" ||
+          profileImage.type === "image/png")
+      ) {
+        const image = new FormData();
+        image.append("file", profileImage);
+        image.append("cloud_name", cloud_name);
+        image.append("upload_preset", upload_preset);
+        // To save the image to cloudinary
+        const response = await fetch(CLOUDINARY_URL, {
+          method: "POST",
+          body: image,
+        });
+
+        const imgData = await response.json();
+        // console.log(imgData);
+
+        imageURL = imgData.url.toString();
+      }
+
+      // To Save the uploaded profile image to the MongoDB database
+      const userData = { photo: profileImage ? imageURL : profileImage.photo };
+      await dispatch(updatePhotoSlice(userData));
+      setImagePreview(null);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className="profile-container">
@@ -106,7 +147,7 @@ const ProfilePage = () => {
 
             <h3>Role: {profileData.role}</h3>
             {imagePreview !== null && (
-              <button className="photo-btn" onClick={handleUploadPhoto}>
+              <button className="photo-btn" onClick={handleUploadedPhoto}>
                 <AiOutlineCloudUpload size={18} /> Upload Photo
               </button>
             )}
