@@ -11,6 +11,7 @@ import {
 } from "../../redux/features/auth/authSlice";
 import Loader from "../../components/loader/loader";
 import { toast } from "react-toastify";
+import { shortenText } from "../../utils";
 
 // For the Cloudinary implementation
 const cloud_name = import.meta.env.VITE_APP_CLOUD_NAME;
@@ -240,6 +241,19 @@ const ProfilePage = () => {
         )}
       </section>
     </div>
+  );
+};
+
+// For the Username settings
+export const UserName = () => {
+  const { user } = useSelector((state) => state.auth);
+  const username = user?.name || "...";
+
+  return (
+    <span style={{ color: "gold", fontSize: "0.9rem" }}>
+      {" "}
+      Hi, {shortenText(username, 9)} |{" "}
+    </span>
   );
 };
 

@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { RESET_AUTH, logoutSlice } from "../../redux/features/auth/authSlice";
+import { UserName } from "../../pages/profile/ProfilePage";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -28,9 +29,20 @@ const NavBar = () => {
 
       <div>
         {isLoggedIn ? (
-          <Link to="/" onClick={handleLogout}>
-            <button className="login">Log Out</button>
-          </Link>
+          <span>
+            <NavLink to="/profile" className="username">
+              <i class="fa-solid fa-user"></i>
+              <UserName />
+            </NavLink>
+
+            <NavLink>
+              <button className="order">My Order</button>
+            </NavLink>
+
+            <Link to="/" onClick={handleLogout}>
+              <button className="login">Log Out</button>
+            </Link>
+          </span>
         ) : (
           <NavLink to="/login">
             <button className="login">Log In</button>
