@@ -162,7 +162,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
-        toast.success(action.payload);
+        toast.error(action.payload);
       })
 
       // For the User Login
@@ -184,7 +184,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
-        toast.success(action.payload);
+        toast.error(action.payload);
       })
 
       // For the User Logout
@@ -205,7 +205,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        toast.error(action.payload);
       })
 
       // For the User Login Status
@@ -241,7 +241,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        console.log("Fulfilled getUser:", action.payload)  
+        console.log("Fulfilled getUser:", action.payload);
       })
 
       .addCase(getUserSlice.rejected, (state, action) => {
@@ -252,7 +252,7 @@ const authSlice = createSlice({
         console.log("Rejected getUser:", action.payload);
       })
 
-        // For Update the User Profile
+      // For Update the User Profile
       .addCase(updateUserSlice.pending, (state) => {
         state.isLoading = true;
       })
@@ -262,8 +262,8 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("You have updated your profile!")
-        console.log("Fulfilled updateUser:", action.payload)  
+        toast.success("You have updated your profile!");
+        console.log("Fulfilled updateUser:", action.payload);
       })
 
       .addCase(updateUserSlice.rejected, (state, action) => {
@@ -274,7 +274,7 @@ const authSlice = createSlice({
         console.log("Rejected updateUser:", action.payload);
       })
 
-         // For Update the User Photo
+      // For Update the User Photo
       .addCase(updatePhotoSlice.pending, (state) => {
         state.isLoading = true;
       })
@@ -284,8 +284,8 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("You have updated your profile!")
-        console.log("Fulfilled updatePhoto:", action.payload)  
+        toast.success("You have updated your profile!");
+        console.log("Fulfilled updatePhoto:", action.payload);
       })
 
       .addCase(updatePhotoSlice.rejected, (state, action) => {
@@ -299,5 +299,7 @@ const authSlice = createSlice({
 });
 
 export const { RESET_AUTH } = authSlice.actions;
+
+export const authenticatedUser = (state) => state.auth.user;
 
 export default authSlice.reducer;

@@ -7,6 +7,7 @@ import { validateEmail } from "../../utils";
 import Loader from "../../components/loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, loginSlice } from "../../redux/features/auth/authSlice";
+import Footer from "../../components/Footer";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +29,7 @@ const LoginPage = () => {
     }
 
     const userData = { email, password };
-    console.log(userData);
+    // console.log(userData);
 
     await dispatch(loginSlice(userData));
   };
@@ -75,6 +76,8 @@ const LoginPage = () => {
           </p>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

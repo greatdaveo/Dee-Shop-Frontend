@@ -25,6 +25,7 @@ const NavBar = () => {
 
       <div>
         <NavLink to="/items">Check Items 👁️</NavLink>
+        <NavLink to="/admin/home"> | Admin</NavLink>
       </div>
 
       <div>

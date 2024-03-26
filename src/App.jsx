@@ -8,19 +8,31 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loginStatusSlice } from "./redux/features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getUserSlice,
+  loginStatusSlice,
+} from "./redux/features/auth/authSlice";
 import ProfilePage from "./pages/profile/ProfilePage";
+import AdminPage from "./pages/admin/AdminPage";
 
 function App() {
   axios.defaults.withCredentials = true;
 
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   // This is to check if the user is logged in
   useEffect(() => {
     dispatch(loginStatusSlice());
   }, [dispatch]);
+
+  // To deal with the loading effect of the login status
+  useEffect(() => {
+    if (isLoggedIn && user === null) {
+      dispatch(getUserSlice());
+    }
+  }, [dispatch, isLoggedIn, user]);
 
   return (
     <div>
@@ -33,6 +45,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+
+          <Route path="/admin/*" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
     </div>

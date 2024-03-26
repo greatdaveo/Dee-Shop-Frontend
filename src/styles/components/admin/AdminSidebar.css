@@ -1,0 +1,38 @@
+.sidebar-cover {
+    padding: 2rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.sidebar-cover .user {
+    /* padding: 0.5rem 1rem; */
+    color: white;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-cover .user p {
+    margin-top: 0.2rem;
+}
+
+.sidebar-cover .sidebar-content {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+
+.sidebar-cover .sidebar-content a {
+    color: white;
+}
+
+.sidebar-cover .sidebar-content a:active {
+    border-right: 1px solid gold;
+}
