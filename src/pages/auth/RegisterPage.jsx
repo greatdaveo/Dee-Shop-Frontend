@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { RESET_AUTH, registerSlice } from "../../redux/features/auth/authSlice";
+import { RESET_AUTH, registerSlice } from "../../redux/auth/authSlice";
 import Loader from "../../components/loader/loader";
 
 const initialState = {
