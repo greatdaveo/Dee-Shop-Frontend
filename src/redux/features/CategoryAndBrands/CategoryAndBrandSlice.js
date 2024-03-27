@@ -50,7 +50,8 @@ export const categoryAndBrandSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Category has been created successfully!");
+        toast.success("Category created successfully!");
+        console.log("Fulfilled created Category", action.payload);
       })
 
       .addCase(createCategorySlice.rejected, (state, action) => {
