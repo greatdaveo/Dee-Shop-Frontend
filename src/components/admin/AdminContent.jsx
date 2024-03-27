@@ -1,9 +1,12 @@
 import React from "react";
+import CreateCategory from "./category/CreateCategory";
+import CategoryList from "./category/CategoryList";
 
 const AdminContent = () => {
   return (
     <div>
-      <h1>Admin Home</h1>
+      <CreateCategory />
+      <CategoryList />
     </div>
   );
 };

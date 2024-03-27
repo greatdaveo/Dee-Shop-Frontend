@@ -4,6 +4,8 @@ import Footer from "../../components/Footer";
 import "../../styles/pages/admin/AdminPage.css";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminContent from "../../components/admin/AdminContent";
+import { Route, Routes } from "react-router";
+import AdminHome from "../../components/admin/AdminHome";
 
 const AdminPage = () => {
   return (
@@ -18,7 +20,10 @@ const AdminPage = () => {
         </div>
 
         <div className="content">
-          <AdminContent />
+          <Routes>
+            <Route path="home" element={<AdminHome />} />
+            <Route path="category" element={<AdminContent />} />
+          </Routes>
         </div>
       </div>
 

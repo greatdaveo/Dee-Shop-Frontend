@@ -1,0 +1,22 @@
+.create-cat {
+    /* display: flex;
+    flex-direction: column; */
+}
+.create-cat form label {
+    font-weight: 500;
+}
+
+.create-cat form input {
+    width: 30vw;
+    padding: 0.5rem;
+    outline: none;
+    margin: 0.5rem auto;
+}
+
+.create-cat form .btn {
+    padding: 0.3rem 1rem;
+    background: var(--primary-color);
+    color: black;
+    border: 1px solid gray;
+    font-weight: bold;
+}
