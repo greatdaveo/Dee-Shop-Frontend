@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserSlice, loginStatusSlice } from "./redux/auth/authSlice";
+import { getUserSlice, loginStatusSlice } from "./redux/features/auth/authSlice";
 import ProfilePage from "./pages/profile/ProfilePage";
 import AdminPage from "./pages/admin/AdminPage";
 

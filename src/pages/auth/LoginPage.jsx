@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
 import Loader from "../../components/loader/loader";
 import { useDispatch, useSelector } from "react-redux";
-import { RESET_AUTH, loginSlice } from "../../redux/auth/authSlice";
+import { RESET_AUTH, loginSlice } from "../../redux/features/auth/authSlice";
 import Footer from "../../components/Footer";
 
 const LoginPage = () => {

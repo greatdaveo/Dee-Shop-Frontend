@@ -3,7 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../../styles/components/homepage/NavBar.css";
 import { Logo } from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
-import { RESET_AUTH, logoutSlice } from "../../redux/auth/authSlice";
+import { RESET_AUTH, logoutSlice } from "../../redux/features/auth/authSlice";
 import { UserName } from "../../pages/profile/ProfilePage";
 
 const NavBar = () => {

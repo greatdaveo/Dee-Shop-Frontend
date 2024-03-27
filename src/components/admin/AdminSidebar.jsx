@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import "../../styles/components/admin/AdminSidebar.css";
 
 import { useSelector } from "react-redux";
-import { authenticatedUser } from "../../redux/auth/authSlice";
+import { authenticatedUser } from "../../redux/features/auth/authSlice";
 import { NavLink } from "react-router-dom";
 
 // For Active Link to know which page is active

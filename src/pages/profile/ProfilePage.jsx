@@ -8,7 +8,7 @@ import {
   getUserSlice,
   updatePhotoSlice,
   updateUserSlice,
-} from "../../redux/auth/authSlice";
+} from "../../redux/features/auth/authSlice";
 import Loader from "../../components/loader/loader";
 import { toast } from "react-toastify";
 import { shortenText } from "../../utils";

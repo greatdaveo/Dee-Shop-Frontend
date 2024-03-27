@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 // For Redux State Magt
 import {Provider} from "react-redux"
-import { store } from "./redux/products/store.js";
+import { store } from "./redux/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
