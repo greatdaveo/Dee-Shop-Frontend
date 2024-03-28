@@ -6,8 +6,11 @@ import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminContent from "../../components/admin/AdminContent";
 import { Route, Routes } from "react-router";
 import AdminHome from "../../components/admin/AdminHome";
+import { useSelector } from "react-redux";
+import Loader from "../../components/loader/loader";
 
 const AdminPage = () => {
+  const { isLoading } = useSelector((state) => state.category);
   return (
     <div className="admin">
       <div className="nav">

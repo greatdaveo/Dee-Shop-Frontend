@@ -3,17 +3,17 @@ import { toast } from "react-toastify";
 import categoryAndBrandService from "./categoryAndBrandService";
 
 const initialState = {
-  category: [],
+  categories: [],
   isError: false,
-  isLoading: false,
   isSuccess: false,
+  isLoading: false,
   message: "",
 };
 
 // For Create Category
 export const createCategorySlice = createAsyncThunk(
   "category/create-category",
-  async (formData, thunkApi) => {
+  async (formData, thunkAPI) => {
     try {
       return await categoryAndBrandService.createCategory(formData);
     } catch (error) {
@@ -27,7 +27,25 @@ export const createCategorySlice = createAsyncThunk(
   }
 );
 
-export const categoryAndBrandSlice = createSlice({
+// To get All Category
+export const getAllCategorySlice = createAsyncThunk(
+  "category/all-categories",
+  async (_, thunkAPI) => {
+    try {
+      return await categoryAndBrandService.getAllCategories();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+      console.log(thunkAPI);
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+const categoryAndBrandSlice = createSlice({
   name: "category",
   initialState,
   reducers: {
@@ -39,7 +57,7 @@ export const categoryAndBrandSlice = createSlice({
     },
   },
 
-  extraReducer: (builder) => {
+  extraReducers: (builder) => {
     builder
       // For Create Category
       .addCase(createCategorySlice.pending, (state) => {
@@ -50,8 +68,9 @@ export const categoryAndBrandSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
+        state.categories = action.payload;
         toast.success("Category created successfully!");
-        console.log("Fulfilled created Category", action.payload);
+        // console.log("Fulfilled created Category:", action.payload);
       })
 
       .addCase(createCategorySlice.rejected, (state, action) => {
@@ -59,6 +78,27 @@ export const categoryAndBrandSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
+      })
+
+      // To Get All Category
+      .addCase(getAllCategorySlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(getAllCategorySlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.categories = action.payload;
+        // console.log("All categories", action.payload);
+      })
+
+      .addCase(getAllCategorySlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        // console.log("Unable to fetch categories!", action.payload);
       });
   },
 });

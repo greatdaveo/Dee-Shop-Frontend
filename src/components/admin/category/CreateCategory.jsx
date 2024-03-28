@@ -3,13 +3,17 @@ import { useState } from "react";
 import "../../../styles/components/admin/category/CreateCategory.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { createCategorySlice } from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
-import Loader from "../../loader/loader";
+import {
+  createCategorySlice,
+  getAllCategorySlice,
+} from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
+// import Loader from "../../loader/loader";
 
-const CreateCategory = () => {
+const CreateCategory = ({ reloadCategory }) => {
   const [name, setName] = useState("");
   const { isLoading } = useSelector((state) => state.category);
   const dispatch = useDispatch();
+
   const saveCategory = (e) => {
     e.preventDefault();
     // console.log(name);
@@ -22,14 +26,14 @@ const CreateCategory = () => {
     };
 
     dispatch(createCategorySlice(formData));
+    // This is to ensure it reloads and update the created category list in the browser
+    dispatch(getAllCategorySlice());
     setName("");
-    toast.success("Category created successfully!");
+    reloadCategory();
   };
 
   return (
-    <>
-      {isLoading && <Loader />}
-
+    <div>
       <div className="create-cat">
         <h2>Create Category</h2>
         <p>
@@ -53,7 +57,7 @@ const CreateCategory = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

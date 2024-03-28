@@ -217,7 +217,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isLoggedIn = action.payload;
-        console.log("Fulfilled User Login Status:", action.payload);
+        // console.log("Fulfilled User Login Status:", action.payload);
         // When the token sent to the backend is not valid
         if (action.payload.message === "invalid signature") {
           state.isLoggedIn = false;
@@ -228,7 +228,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        console.log("Rejected User Login Status:", action.payload);
+        // console.log("Rejected User Login Status:", action.payload);
       })
 
       // For the Get User
@@ -241,7 +241,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        console.log("Fulfilled getUser:", action.payload);
+        // console.log("Fulfilled getUser:", action.payload);
       })
 
       .addCase(getUserSlice.rejected, (state, action) => {
@@ -249,7 +249,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
-        console.log("Rejected getUser:", action.payload);
+        // console.log("Rejected getUser:", action.payload);
       })
 
       // For Update the User Profile
@@ -263,7 +263,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
         toast.success("You have updated your profile!");
-        console.log("Fulfilled updateUser:", action.payload);
+        // console.log("Fulfilled updateUser:", action.payload);
       })
 
       .addCase(updateUserSlice.rejected, (state, action) => {
@@ -271,7 +271,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
-        console.log("Rejected updateUser:", action.payload);
+        // console.log("Rejected updateUser:", action.payload);
       })
 
       // For Update the User Photo
@@ -285,7 +285,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
         toast.success("You have updated your profile!");
-        console.log("Fulfilled updatePhoto:", action.payload);
+        // console.log("Fulfilled updatePhoto:", action.payload);
       })
 
       .addCase(updatePhotoSlice.rejected, (state, action) => {
@@ -293,7 +293,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
-        console.log("Rejected updatePhoto:", action.payload);
+        // console.log("Rejected updatePhoto:", action.payload);
       });
   },
 });

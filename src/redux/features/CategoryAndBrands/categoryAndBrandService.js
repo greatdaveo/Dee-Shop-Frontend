@@ -13,8 +13,17 @@ const createCategory = async (formData) => {
   return response.data;
 };
 
+// For Get ALl Category
+const getAllCategories = async () => {
+  const response = await axios.get(API_URL + "category/all-categories");
+
+  return response.data;
+
+};
+
 const categoryAndBrandService = {
   createCategory,
+  getAllCategories,
 };
 
 export default categoryAndBrandService;
