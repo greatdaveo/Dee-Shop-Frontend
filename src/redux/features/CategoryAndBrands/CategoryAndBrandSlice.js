@@ -45,6 +45,24 @@ export const getAllCategorySlice = createAsyncThunk(
   }
 );
 
+// To Delete Category
+export const deleteCategorySlice = createAsyncThunk(
+  "category/delete-category",
+  async (slug, thunkAPI) => {
+    try {
+      return await categoryAndBrandService.deleteCategory(slug);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+      console.log(thunkAPI);
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const categoryAndBrandSlice = createSlice({
   name: "category",
   initialState,
@@ -99,6 +117,27 @@ const categoryAndBrandSlice = createSlice({
         state.message = action.payload;
         toast.error(action.payload);
         // console.log("Unable to fetch categories!", action.payload);
+      })
+
+      // To Delete Category
+      .addCase(deleteCategorySlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(deleteCategorySlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        toast.success(action.payload);
+        // console.log( action.payload);
+      })
+
+      .addCase(deleteCategorySlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        // console.log("action.payload);
       });
   },
 });

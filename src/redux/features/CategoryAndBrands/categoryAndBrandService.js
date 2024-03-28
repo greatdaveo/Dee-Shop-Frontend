@@ -13,17 +13,26 @@ const createCategory = async (formData) => {
   return response.data;
 };
 
-// For Get ALl Category
+// To Get ALl Category
 const getAllCategories = async () => {
   const response = await axios.get(API_URL + "category/all-categories");
 
   return response.data;
+};
 
+//  To Delete Category
+const deleteCategory = async (slug) => {
+  const response = await axios.delete(
+    API_URL + "category/delete-category/" + slug
+  );
+
+  return response.data.message;
 };
 
 const categoryAndBrandService = {
   createCategory,
   getAllCategories,
+  deleteCategory,
 };
 
 export default categoryAndBrandService;
