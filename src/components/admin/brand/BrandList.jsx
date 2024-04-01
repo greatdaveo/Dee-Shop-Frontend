@@ -1,34 +1,32 @@
 import React, { useEffect } from "react";
-import "../../../styles/components/admin/category/CategoryList.css";
+import "../../../styles/components/admin/brand/BrandList.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deleteCategorySlice,
-  getAllCategorySlice,
+  deleteBrandSlice,
+  getAllBrandsSlice,
 } from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
 import { FaTrashAlt } from "react-icons/fa";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-const CategoryList = () => {
-  const { categories, isError, isSuccess } = useSelector(
-    (state) => state.category
-  );
+const BrandList = () => {
+  const { brands } = useSelector((state) => state.category);
 
   // console.log(categories);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCategorySlice());
+    dispatch(getAllBrandsSlice());
   }, [dispatch]);
 
   const confirmToDelete = (slug) => {
     confirmAlert({
-      title: "Delete Category",
-      message: "Are you sure you want to delete category?",
+      title: "Delete Brand",
+      message: "Are you sure you want to delete brand?",
       buttons: [
         {
           label: "Delete",
-          onClick: () => deleteCat(slug),
+          onClick: () => deleteBrand(slug),
         },
         {
           label: "Cancel",
@@ -38,41 +36,43 @@ const CategoryList = () => {
     });
   };
 
-  const deleteCat = async (slug) => {
-    await dispatch(deleteCategorySlice(slug));
-    // To refresh the page after deleting
-    await dispatch(getAllCategorySlice());
+  const deleteBrand = async (slug) => {
+    await dispatch(deleteBrandSlice(slug));
+
+    // To refresh the page and the brands state after deleting
+    await dispatch(getAllBrandsSlice());
   };
-
   return (
-    <div className="cat-cover">
-      <h1>Category List 📃</h1>
+    <div className="brand-cover">
+      <h1>Brands List 📃</h1>
 
-      <div className="cat-table">
-        {categories.length === 0 ? (
-          <p>No Category Found</p>
+      <div className="brand-table">
+        {brands.length === 0 ? (
+          <p>No Brand Found</p>
         ) : (
           <table>
             <thead>
               <tr>
                 <th>S/N</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Action</th>
               </tr>
             </thead>
 
             <tbody>
-              {Array.isArray(categories) ? (
-                categories.map((cat, i) => (
-                  <tr key={i}>
+              {Array.isArray(brands) ? (
+                brands.map((brand, i) => (
+                  <tr key={brand._id}>
                     <td>{i + 1}</td>
-                    <td>{cat.name}</td>
+                    <td>{brand.name}</td>
+                    <td>{brand.category}</td>
                     <td>
                       <button>
                         <FaTrashAlt
                           size={15}
                           color="red"
-                          onClick={() => confirmToDelete(cat.slug)}
+                          onClick={() => confirmToDelete(brand.slug)}
                         />
                       </button>
                     </td>
@@ -89,4 +89,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default BrandList;

@@ -32,6 +32,12 @@ const AdminSidebar = () => {
             Category
           </NavLink>
         </li>
+
+        <li>
+          <NavLink to="/admin/brand" className={activeLink}>
+            Brand
+          </NavLink>
+        </li>
       </nav>
     </div>
   );

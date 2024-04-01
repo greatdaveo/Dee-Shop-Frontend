@@ -9,27 +9,26 @@ import {
 } from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
 // import Loader from "../../loader/loader";
 
-const CreateCategory = ({ reloadCategory }) => {
+const CreateCategory = () => {
   const [name, setName] = useState("");
   const { isLoading } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
-  const saveCategory = (e) => {
+  const saveCategory = async (e) => {
     e.preventDefault();
     // console.log(name);
     if (name.length < 3) {
-      return toast.error("Coupon must be up to 3 characters!");
+      return toast.error("Category name must be up to 3 characters!");
     }
 
     const formData = {
       name,
     };
 
-    dispatch(createCategorySlice(formData));
-    // This is to ensure it reloads and update the created category list in the browser
-    dispatch(getAllCategorySlice());
+    // await to ensure it reloads and update the created category list in the browser
+    await dispatch(createCategorySlice(formData));
+    await dispatch(getAllCategorySlice());
     setName("");
-    reloadCategory();
   };
 
   return (

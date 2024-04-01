@@ -1,32 +1,32 @@
-.cat-cover {
+.brand-cover {
     width: 70vw;
     margin: 0 auto;
 }
 
-.cat-cover h1 {
+.brand-cover h1 {
     border-bottom: 1px solid #333;
     margin-bottom: 1rem;
 }
 
-.cat-table table {
+.brand-table table {
     width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
     margin-bottom: 2rem;
 }
 
-.cat-table th, .cat-table td {
+.brand-table th, .brand-table td {
       text-align: left;
       padding: 2px;
 }
 
- .cat-table tr:nth-child(even) {
+ .brand-table tr:nth-child(even) {
     background: #ccc;
     border-bottom: 1px solid #333;
 
  }
 
-.cat-table button {
+.brand-table button {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 1px;

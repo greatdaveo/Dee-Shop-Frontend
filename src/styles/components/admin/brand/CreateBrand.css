@@ -1,19 +1,26 @@
-.create-cat {
+.create-brand {
     /* display: flex;
     flex-direction: column; */
 }
-.create-cat form label {
+.create-brand form label {
     font-weight: 500;
 }
 
-.create-cat form input {
+.create-brand form input {
     width: 30vw;
     padding: 0.5rem;
     outline: none;
     margin: 0.5rem auto;
 }
 
-.create-cat form .btn {
+.create-brand form select {
+    width: 31.5vw;
+    padding: 0.5rem;
+    outline: none;
+    margin: 0.5rem auto;
+}
+
+.create-brand form .btn {
     padding: 0.3rem 1rem;
     background: var(--primary-color);
     color: black;
