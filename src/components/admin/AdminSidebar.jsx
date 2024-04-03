@@ -21,23 +21,37 @@ const AdminSidebar = () => {
       </div>
 
       <nav className="sidebar-content">
-        <li>
-          <NavLink to="/admin/home" className={activeLink}>
-            Home
-          </NavLink>
-        </li>
+        <ul>
+          <li>
+            <NavLink to="/admin/home" className={activeLink}>
+              Home
+            </NavLink>
+          </li>
 
-        <li>
-          <NavLink to="/admin/category" className={activeLink}>
-            Category
-          </NavLink>
-        </li>
+          <li>
+            <NavLink to="/admin/category" className={activeLink}>
+              Category
+            </NavLink>
+          </li>
 
-        <li>
-          <NavLink to="/admin/brand" className={activeLink}>
-            Brand
-          </NavLink>
-        </li>
+          <li>
+            <NavLink to="/admin/all-products" className={activeLink}>
+              All Products
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/admin/add-product" className={activeLink}>
+              Add Product
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/admin/brand" className={activeLink}>
+              Brand
+            </NavLink>
+          </li>
+        </ul>
       </nav>
     </div>
   );

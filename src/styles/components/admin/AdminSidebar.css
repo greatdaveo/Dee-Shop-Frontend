@@ -1,5 +1,5 @@
 .sidebar-cover {
-    padding: 1rem;
+    padding: 1rem 0rem;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -26,23 +26,21 @@
     flex-direction: column;
     align-items: first baseline;
     margin-left: -3rem;
-    /* text-align: start; */
+    font-weight: 600;
+
 }
 
 .sidebar-cover .sidebar-content li {
     padding-right: 5rem;
     border-bottom: 1px solid gold;
-    width: 5vw;
-    margin-bottom: 0.5rem;
-
+    margin-bottom: 0.5rem;   
 }
 
 .sidebar-cover .sidebar-content li a {
     color: white;
 }
 
-.sidebar-cover .sidebar-content li:active {
-    border-right: 2.5px solid gold;    
-    background: gold;
-    color: black;
+.sidebar-cover .sidebar-content li .active {
+    color: gold;
+    font-weight: 1000;
 }

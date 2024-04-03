@@ -9,6 +9,9 @@ import AdminHome from "../../components/admin/AdminHome";
 import { useSelector } from "react-redux";
 import Loader from "../../components/loader/loader";
 import Brand from "../../components/admin/brand/Brand";
+import ProductForm from "../../components/admin/product/ProductForm";
+import ViewProducts from "../../components/admin/product/ViewProducts";
+import EditProduct from "../../components/admin/product/EditProduct";
 
 const AdminPage = () => {
   const { isLoading } = useSelector((state) => state.category);
@@ -31,6 +34,9 @@ const AdminPage = () => {
               <Route path="home" element={<AdminHome />} />
               <Route path="category" element={<Category />} />
               <Route path="brand" element={<Brand />} />
+              <Route path="add-product" element={<ProductForm />} />
+              <Route path="all-products" element={<ViewProducts />} />
+              <Route path="edit-product/:id" element={<EditProduct />} />
             </Routes>
           </div>
         </div>
