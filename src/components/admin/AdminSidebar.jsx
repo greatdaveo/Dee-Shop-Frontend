@@ -35,14 +35,14 @@ const AdminSidebar = () => {
           </li>
 
           <li>
-            <NavLink to="/admin/all-products" className={activeLink}>
-              All Products
+            <NavLink to="/admin/add-product" className={activeLink}>
+              Add Product
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/admin/add-product" className={activeLink}>
-              Add Product
+            <NavLink to="/admin/all-products" className={activeLink}>
+              All Products
             </NavLink>
           </li>
 
