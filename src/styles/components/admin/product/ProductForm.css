@@ -1,0 +1,39 @@
+.product-form {
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+.product-form form {
+    display: flex;
+    gap: 3rem;
+    margin: 0 auto;
+    padding: 1rem;    
+}
+
+.product-form form input {
+    width: 25vw;
+    padding: 0.5rem;
+    padding: 0.5rem;
+    outline: none;
+    margin: 0.5rem auto;
+}
+
+.product-form form label {
+    font-weight: 500;
+}
+
+.product-form form select {
+    width: 26vw;
+    padding: 0.5rem;
+    outline: none;
+    margin: 0.5rem auto;
+}
+
+.product-form form .btn {
+    padding: 0.5rem 1rem;
+    margin-top: 6rem;
+    background: var(--primary-color);
+    color: black;
+    border: 1px solid var(--primary-color);
+    font-weight: bold;
+}

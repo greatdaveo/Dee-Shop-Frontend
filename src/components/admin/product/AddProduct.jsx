@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductForm from "./ProductForm";
-import { getAllCategorySlice } from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
+import {
+  getAllBrandsSlice,
+  getAllCategorySlice,
+} from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
 
 const AddProduct = () => {
   const initialState = {
@@ -9,14 +12,26 @@ const AddProduct = () => {
     category: "",
     brand: "",
     quantity: "",
-    description: "",
+    // description: "",
     regularPrice: "",
+    discountedPrice: "",
+    color: "",
   };
 
   const dispatch = useDispatch();
   const [product, setProduct] = useState(initialState);
   const [filteredBrands, setFilteredBrands] = useState([]);
-  const { name, category, brand, quantity, color, regularPrice } = product;
+  // For Description state
+  const [description, setDescription] = useState("");
+  const {
+    name,
+    category,
+    brand,
+    quantity,
+    color,
+    regularPrice,
+    discountedPrice,
+  } = product;
 
   const { isLoading } = useSelector((state) => state.product);
   //   To get the Categories and Brands from the Database
@@ -25,6 +40,7 @@ const AddProduct = () => {
   //   To fetch the category and the brands when the page is refreshed
   useEffect(() => {
     dispatch(getAllCategorySlice());
+    dispatch(getAllBrandsSlice());
   }, [dispatch]);
 
   // To filter Brands based on the product category selected
@@ -48,7 +64,8 @@ const AddProduct = () => {
 
   const saveProducts = (e) => {
     e.preventDefault();
-    // console.log(product);
+    console.log(product);
+    console.log(description)
   };
 
   return (
@@ -63,6 +80,8 @@ const AddProduct = () => {
         brands={brands}
         isEditing={false}
         filteredBrands={filteredBrands}
+        description={description}
+        setDescription={setDescription}
       />
     </section>
   );
