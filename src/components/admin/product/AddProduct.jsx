@@ -5,6 +5,8 @@ import {
   getAllBrandsSlice,
   getAllCategorySlice,
 } from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
+import { createProductSlice } from "../../../redux/features/products/productSlice";
+import { useNavigate } from "react-router";
 
 const AddProduct = () => {
   const initialState = {
@@ -12,13 +14,13 @@ const AddProduct = () => {
     category: "",
     brand: "",
     quantity: "",
-    // description: "",
     regularPrice: "",
     discountedPrice: "",
     color: "",
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(initialState);
   const [filteredBrands, setFilteredBrands] = useState([]);
   // For Description state
@@ -62,10 +64,38 @@ const AddProduct = () => {
     setProduct({ ...product, [name]: value });
   };
 
-  const saveProducts = (e) => {
+  // To Create SKU - Store Keeping Unit
+  const generateSKU = (category) => {
+    const letter = category.slice(0, 3).toUpperCase();
+    const number = Date.now();
+    const sku = letter + "-" + number;
+    return sku;
+  };
+
+  // To save the product
+  const saveProducts = async (e) => {
     e.preventDefault();
-    console.log(product);
-    console.log(description)
+    // console.log(product);
+    // console.log(description)
+
+    const formData = {
+      name,
+      // images,
+      sku: generateSKU(category),
+      category,
+      brand,
+      color,
+      quantity,
+      regularPrice,
+      discountedPrice,
+      description,
+    };
+
+    // console.log(formData);
+
+    // To save the Product Form Data to the Database
+    await dispatch(createProductSlice(formData));
+    navigate("/admin/all-products");
   };
 
   return (
