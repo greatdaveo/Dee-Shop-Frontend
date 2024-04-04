@@ -1,0 +1,65 @@
+.uploadWidget {
+    border: 1px solid gray;
+    border-style: dotted;
+    padding: 0.5rem;
+    width: 25vw;
+    text-align: center;
+}
+
+.uploadWidget .upload-container {
+    border: 2px solid gray;
+    border-style: dotted;
+    border-radius: 10px;
+    padding: 1rem;
+    border-style: dotted;
+}
+
+.uploadWidget label {
+    cursor: pointer;
+}
+
+.uploadWidget label input {
+    outline: none;
+}
+
+.uploadWidget .error {
+    color: red;
+    text-align: center;
+}
+
+.uploadWidget .upload-img-btn {
+    background: rgb(27, 27, 207);
+    border: none;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 5px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.img-container {
+    /* height: 40vh; */
+    display: flex;
+    gap: 1rem;
+    border: 1px solid grey;
+    padding: 0.5rem;
+}
+
+.img-container .img {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: fit-content;
+    position: relative;
+}
+
+.img-container button {
+    /* background: none; */
+    border: none;
+    position: absolute;
+    font-size: xx-small;
+    left: 0.5rem;
+    bottom: 0.3rem;
+    color: red;
+    font-weight: bold;
+}

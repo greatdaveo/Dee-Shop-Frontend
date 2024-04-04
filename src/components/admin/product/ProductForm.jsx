@@ -2,6 +2,8 @@ import React from "react";
 import "../../../styles/components/admin/product/ProductForm.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import UploadWidget from "./UploadWidget";
+import { BsTrash } from "react-icons/bs";
 
 const ProductForm = ({
   product,
@@ -12,12 +14,39 @@ const ProductForm = ({
   filteredBrands,
   description,
   setDescription,
+  files,
+  setFiles,
 }) => {
+  // To remover the product image
+
+  const removeImage = (image) => {
+    setFiles(files.filter((img) => img !== image));
+  };
   return (
     <div className="product-form">
       <form onSubmit={saveProducts}>
         <div>
-          <h3>Upload Widget Placeholder</h3>
+          <UploadWidget files={files} setFiles={setFiles} />
+          <label>Product Images: </label>
+          <div className="slide-container">
+            <aside>
+              {files.length > 0 &&
+                files.map((image, i) => (
+                  <div key={i} className="thumbnail">
+                    <img src={image} alt="Product Image" height={100} />
+                    <div>
+                      <button>
+                        <BsTrash
+                          size={25}
+                          className="thumbnail-icon"
+                          onClick={() => removeImage(image)}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </aside>
+          </div>
           <label>Product Name: </label> <br />
           <input
             type="text"

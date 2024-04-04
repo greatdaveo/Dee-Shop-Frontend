@@ -7,6 +7,7 @@ import {
 } from "../../../redux/features/CategoryAndBrands/CategoryAndBrandSlice";
 import { createProductSlice } from "../../../redux/features/products/productSlice";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const initialState = {
@@ -23,6 +24,8 @@ const AddProduct = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState(initialState);
   const [filteredBrands, setFilteredBrands] = useState([]);
+  // The state of the uploaded images file of the product
+  const [files, setFiles] = useState([]);
   // For Description state
   const [description, setDescription] = useState("");
   const {
@@ -78,9 +81,13 @@ const AddProduct = () => {
     // console.log(product);
     // console.log(description)
 
+    if (files.length < 1) {
+      return toast.error("Please add at least 1 image!");
+    }
+
     const formData = {
       name,
-      // images,
+      image: files, // This is the image of the product to be saved in Mongo DB
       sku: generateSKU(category),
       category,
       brand,
@@ -112,6 +119,8 @@ const AddProduct = () => {
         filteredBrands={filteredBrands}
         description={description}
         setDescription={setDescription}
+        files={files}
+        setFiles={setFiles}
       />
     </section>
   );

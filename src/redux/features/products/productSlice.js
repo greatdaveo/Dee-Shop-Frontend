@@ -50,7 +50,7 @@ const productSlice = createSlice({
         state.isError = false;
         state.products = action.payload;
         toast.success("Product created successfully!");
-        // console.log("Fulfilled created products:", action.payload);
+        console.log("Fulfilled created products:", action.payload);
       })
 
       .addCase(createProductSlice.rejected, (state, action) => {
@@ -58,6 +58,7 @@ const productSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
+        console.log("Error Creating Product:", action.payload);
       });
   },
 });
