@@ -1,0 +1,73 @@
+.product-list {
+    /* display: flex; */
+    /* flex-direction: column; */
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.product-list .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    margin: 0 auto;
+    /* gap: 50rem; */
+}
+
+.table table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.table th, table td {
+      text-align: left;
+      padding: 2px;
+}
+
+ .table tr:nth-child(even) {
+    background: #ccc;
+    border-bottom: 1px solid #333;
+
+ }
+
+.table button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.table .td-icons {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.pagination-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-self: center;
+    margin: 0 auto;
+}
+
+.product-list .pagination {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.pagination-container .previousLinkClassName, .pagination-container .nextLinkClassName {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.pagination-container .activeLinkClassName {
+    background: var(--primary-color);
+    padding: 0.3rem;
+    border-radius: 5px;
+}

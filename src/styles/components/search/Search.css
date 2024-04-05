@@ -1,0 +1,31 @@
+.search-container {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+}
+
+.search-container i {
+    display: flex;
+    position: absolute;
+    left: 0.8rem;
+}
+
+.search-container input {
+    outline: none;
+    padding: 0.4rem 0rem;
+    border-radius: 10px;
+    padding-left: 1.6rem;
+    /* border-color: rgb(207, 197, 197); */
+}
+
+.search-post .input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-container i {
+  position: absolute;
+
+}
