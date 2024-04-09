@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../../styles/components/admin/product/ViewProduct.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsSlice } from "../../../redux/features/products/productSlice";
+import {
+  deleteProductSlice,
+  getAllProductsSlice,
+} from "../../../redux/features/products/productSlice";
 import Search from "../../search/Search";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
 import { shortenText } from "../../../utils/index";
 import ReactPaginate from "react-paginate";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const ViewProducts = () => {
   const dispatch = useDispatch();
@@ -25,6 +30,29 @@ const ViewProducts = () => {
       dispatch(getAllProductsSlice());
     }
   }, [isLoggedIn, dispatch]);
+
+  // To Delete Product in all the products list
+  const confirmToDelete = (id) => {
+    confirmAlert({
+      title: "Delete Product",
+      message: "Are you sure you want to delete this product?",
+      buttons: [
+        {
+          label: "Delete",
+          onClick: () => delProduct(id),
+        },
+        {
+          label: "Cancel",
+          // onClick: () => alert('Click No')
+        },
+      ],
+    });
+  };
+
+  const delProduct = async (id) => {
+    await dispatch(deleteProductSlice(id));
+    await dispatch(getAllProductsSlice());
+  };
 
   // For Pagination
   const itemsPerPage = 5;
@@ -95,7 +123,13 @@ const ViewProducts = () => {
                     </span>
 
                     <span>
-                      <FaTrashAlt size={20} color={"red"} />
+                      <Link>
+                        <FaTrashAlt
+                          size={20}
+                          color={"red"}
+                          onClick={() => confirmToDelete(product._id)}
+                        />
+                      </Link>
                     </span>
                   </td>
                 </tr>

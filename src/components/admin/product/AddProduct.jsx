@@ -102,6 +102,7 @@ const AddProduct = () => {
 
     // To save the Product Form Data to the Database
     await dispatch(createProductSlice(formData));
+
     navigate("/admin/all-products");
   };
 
