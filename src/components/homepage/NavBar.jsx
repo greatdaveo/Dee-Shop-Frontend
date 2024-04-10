@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, logoutSlice } from "../../redux/features/auth/authSlice";
 import { UserName } from "../../pages/profile/ProfilePage";
+import { AdminOnlyLink } from "../../protectedRoute/AdminOnlyRoute";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const NavBar = () => {
 
       <div>
         <NavLink to="/items">Check Items 👁️</NavLink>
-        <NavLink to="/admin/home"> | Admin</NavLink>
+        <AdminOnlyLink>
+          <NavLink to="/admin/home"> | Admin</NavLink>
+        </AdminOnlyLink>
       </div>
 
       <div>
