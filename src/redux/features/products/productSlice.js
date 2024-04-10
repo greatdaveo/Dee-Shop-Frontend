@@ -50,12 +50,46 @@ export const getAllProductsSlice = createAsyncThunk(
   }
 );
 
-// To Get All Products
+// To Delete a Product
 export const deleteProductSlice = createAsyncThunk(
   "products/delete-product",
   async (id, thunkAPI) => {
     try {
       return await productService.deleteProduct(id);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// To Edit a Product
+export const editProductSlice = createAsyncThunk(
+  "products/edit-product",
+  async (id, thunkAPI) => {
+    try {
+      return await productService.editProduct(id);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// To Update a Product
+export const updateProductSlice = createAsyncThunk(
+  "products/update-product",
+  async ({id, formData}, thunkAPI) => {
+    try {
+      return await productService.updateProduct(id, formData);
     } catch (error) {
       const message =
         (error.message && error.response.data && error.message.data.message) ||
@@ -135,8 +169,54 @@ const productSlice = createSlice({
         state.message = action.payload;
         toast.error(action.payload);
         // console.log("Error Creating Product:", action.payload);
+      })
+
+      // For Edit Product
+      .addCase(editProductSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(editProductSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        // This is a single product and not the array of all the products
+        state.product = action.payload;
+        // console.log("Fulfilled products fetched for editing:", action.payload);
+      })
+
+      .addCase(editProductSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        // console.log("Error Creating Product:", action.payload);
+      })
+
+      // For Update the Products list Edited Product
+      .addCase(updateProductSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(updateProductSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;        
+        toast.success("Product updated successfully!!!")
+        console.log("Fulfilled products updated after editing:", action.payload);
+      })
+
+      .addCase(updateProductSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+        // console.log("Error Creating Product:", action.payload);
       });
   },
 });
+
+// To export the single product for editing 
+export const singleProduct = (state) => state.product.product;
 
 export default productSlice.reducer;

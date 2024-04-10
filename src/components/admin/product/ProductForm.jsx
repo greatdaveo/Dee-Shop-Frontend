@@ -78,11 +78,11 @@ const ProductForm = ({
           <label>Product Brand: </label> <br />
           <select
             name="brand"
-            value={product.brand}
+            value={product?.brand}
             onChange={handleInputChange}
           >
             {isEditing ? (
-              <option value={product.brand}>{product.brand}</option>
+              <option value={product?.brand}>{product?.brand}</option>
             ) : (
               <option>Select brand</option>
             )}
@@ -99,7 +99,7 @@ const ProductForm = ({
             type="text"
             placeholder="Color"
             name="color"
-            value={product.color}
+            value={product?.color}
             onChange={handleInputChange}
           />
           <br />
@@ -108,7 +108,7 @@ const ProductForm = ({
             type="number"
             name="regularPrice"
             placeholder="Regular Price"
-            value={product.regularPrice}
+            value={product?.regularPrice}
             onChange={handleInputChange}
           />
           <br />
@@ -117,7 +117,7 @@ const ProductForm = ({
             type="number"
             name="discountedPrice"
             placeholder="Discount Price"
-            value={product.discountedPrice}
+            value={product?.discountedPrice}
             onChange={handleInputChange}
           />
           <br />
@@ -126,7 +126,7 @@ const ProductForm = ({
             type="number"
             name="quantity"
             placeholder="Product Quantity"
-            value={product.quantity}
+            value={product?.quantity}
             onChange={handleInputChange}
           />
           <br />
