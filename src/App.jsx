@@ -13,6 +13,7 @@ import { getUserSlice, loginStatusSlice } from "./redux/features/auth/authSlice"
 import ProfilePage from "./pages/profile/ProfilePage";
 import AdminPage from "./pages/admin/AdminPage";
 import AdminOnlyRoute from "./protectedRoute/AdminOnlyRoute";
+import PageNotFound from "./pages/404/PageNotFound";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -43,7 +44,6 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-
           <Route
             path="/admin/*"
             element={
@@ -52,6 +52,7 @@ function App() {
               </AdminOnlyRoute>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
