@@ -13,6 +13,7 @@ import ProductForm from "../../components/admin/product/ProductForm";
 import ViewProducts from "../../components/admin/product/ViewProducts";
 import EditProduct from "../../components/admin/product/EditProduct";
 import AddProduct from "../../components/admin/product/AddProduct";
+import Coupon from "../../components/admin/coupon/Coupon";
 
 const AdminPage = () => {
   const { isLoading } = useSelector((state) => state.category);
@@ -38,6 +39,7 @@ const AdminPage = () => {
               <Route path="add-product" element={<AddProduct />} />
               <Route path="all-products" element={<ViewProducts />} />
               <Route path="edit-product/:id" element={<EditProduct />} />
+              <Route path="coupon" element={<Coupon />} />
             </Routes>
           </div>
         </div>

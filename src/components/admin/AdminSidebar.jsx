@@ -41,6 +41,12 @@ const AdminSidebar = () => {
           </li>
 
           <li>
+            <NavLink to="/admin/coupon" className={activeLink}>
+              Coupon
+            </NavLink>
+          </li>
+
+          <li>
             <NavLink to="/admin/all-products" className={activeLink}>
               All Products
             </NavLink>
