@@ -14,6 +14,7 @@ import ProfilePage from "./pages/profile/ProfilePage";
 import AdminPage from "./pages/admin/AdminPage";
 import AdminOnlyRoute from "./protectedRoute/AdminOnlyRoute";
 import PageNotFound from "./pages/404/PageNotFound";
+import ShopProductsPage from "./pages/shop/ShopProductsPage";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -44,6 +45,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/shop" element={<ShopProductsPage />} />
+
           <Route
             path="/admin/*"
             element={

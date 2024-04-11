@@ -16,6 +16,7 @@ import ProductForm from "./ProductForm";
 
 const EditProduct = () => {
   const { id } = useParams();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { message } = useSelector((state) => state.product);

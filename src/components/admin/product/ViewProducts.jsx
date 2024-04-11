@@ -60,7 +60,11 @@ const ViewProducts = () => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = products.slice(itemOffset, endOffset);
+  // const currentItems = products.slice(itemOffset, endOffset);
+  const currentItems = Array.isArray(products)
+    ? products.slice(itemOffset, endOffset)
+    : [];
+
   const pageCount = Math.ceil(products.length / itemsPerPage);
 
   const handlePageClick = (event) => {
@@ -102,7 +106,7 @@ const ViewProducts = () => {
 
             <tbody>
               {currentItems.map((product, i) => (
-                <tr>
+                <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{shortenText(product.name, 16)}</td>
                   <td>{product.category}</td>

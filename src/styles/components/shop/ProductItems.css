@@ -1,0 +1,107 @@
+.grid {
+    width: 15vw;
+    border: 1px solid gray;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.grid img {
+    width: 15vw;
+    height: 18vh;
+    margin-bottom: 0rem;
+    /* padding: 0.5rem; */
+}
+
+.grid .grid-content {
+    margin-top: 0rem;
+    /* gap: 0rem; */
+}
+
+.grid .grid-content p {
+    margin: 0;
+}
+
+.grid .grid-content p > :nth-child(1) {
+    color: red;
+}
+
+.grid .grid-content h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.grid .btn-1 {
+    padding: 0.5rem;
+    width: 15vw;
+    border: none;
+    background: #0066d4;
+    color: white;
+    font-weight: bold;
+}
+
+.grid .btn-2 {
+    padding: 0.5rem;
+    width: 15vw;
+    border: none;
+    background: rgb(197, 61, 61);
+    color: white;
+    font-weight: bold;
+}
+
+/* FOR THE LIST STYLING */
+.list {
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+    /* justify-content: center; */
+    align-items: center;
+    width: 40vw;
+    margin: 0 auto;
+    /* border: 1px solid gray; */
+    border-bottom: 1px solid gray;
+}
+
+.list img {
+    width: 20vw;
+    /* height: 18vh; */
+    margin-bottom: 0rem;
+    padding: 0.5rem;
+}
+
+.list .list-content {
+
+    margin-top: 0rem;
+    /* gap: 0rem; */
+}
+
+.list .list-content p {
+    margin: 0;
+}
+
+.list .list-content p > :nth-child(1) {
+    color: red;
+}
+
+.list .list-content h4 {
+    margin: 0;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.list .btn-1 {
+    padding: 0.5rem;
+    width: 10vw;
+    border: none;
+    background: #0066d4;
+    color: white;
+    font-weight: bold;
+}
+
+.list .btn-2 {
+    padding: 0.5rem;
+    width: 10vw;
+    border: none;
+    background: rgb(197, 61, 61);
+    color: white;
+    font-weight: bold;
+}

@@ -17,7 +17,7 @@ const ProductForm = ({
   files,
   setFiles,
 }) => {
-  // To remover the product image
+  // To remove the product image
 
   const removeImage = (image) => {
     setFiles(files.filter((img) => img !== image));

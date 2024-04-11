@@ -24,7 +24,7 @@ const NavBar = () => {
       <div>{Logo}</div>
 
       <div>
-        <NavLink to="/items">Check Items 👁️</NavLink>
+        <NavLink to="/shop">Check Items 👁️</NavLink>
         <AdminOnlyLink>
           <NavLink to="/admin/home"> | Admin</NavLink>
         </AdminOnlyLink>
