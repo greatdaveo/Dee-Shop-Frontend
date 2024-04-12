@@ -16,6 +16,7 @@ import ProductForm from "./ProductForm";
 
 const EditProduct = () => {
   const { id } = useParams();
+  // console.log(id);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -96,7 +97,7 @@ const EditProduct = () => {
       description,
     };
 
-    // console.log(formData);
+    // console.log(id, formData);
 
     // After editing to save the Product Form Data to the Database
     await dispatch(updateProductSlice(id, formData));

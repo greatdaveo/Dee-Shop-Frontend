@@ -1,8 +1,9 @@
 import React from "react";
 import "../../styles/components/shop/ProductItems.css";
 import { Link } from "react-router-dom";
-import { shortenText } from "../../utils";
+import { calculateAverageRating, shortenText } from "../../utils";
 import { toast } from "react-toastify";
+import ProductRating from "../admin/product/productRating/ProductRating";
 
 const ProductItems = ({
   product,
@@ -12,6 +13,9 @@ const ProductItems = ({
   regularPrice,
   discountedPrice,
 }) => {
+  // To calculate the ratings for each product
+  const averageRating = calculateAverageRating(product?.ratings);
+
   return (
     <div className={grid ? "grid" : "list"}>
       <Link to={`product-details/${product._id}`}>
@@ -26,7 +30,13 @@ const ProductItems = ({
           <span>{` $${discountedPrice}`}</span>
         </p>
 
-        <p>Rating ***</p>
+        <p>
+          <ProductRating
+            averageRating={averageRating}
+            noOfRatings={product?.ratings?.length}
+          />
+        </p>
+
         <h4>{shortenText(name, 15)}</h4>
 
         {product?.quantity > 0 ? (

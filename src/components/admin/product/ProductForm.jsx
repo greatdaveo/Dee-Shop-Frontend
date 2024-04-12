@@ -143,7 +143,7 @@ const ProductForm = ({
             formats={ProductForm.formats}
           />
           <button type="submit" className="btn">
-            Save Product
+            {isEditing ? "Update Product" : "Save Product"}
           </button>
         </div>
       </form>
