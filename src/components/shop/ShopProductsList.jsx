@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/components/shop/ShopProductList.css";
 import Search from "../../components/search/Search";
 import { FaListAlt } from "react-icons/fa";
 import { BsFillGridFill } from "react-icons/bs";
 import { useState } from "react";
 import ProductItems from "./ProductItems";
+import { useDispatch, useSelector } from "react-redux";
+import { FILTER_BY_SEARCH } from "../../redux/features/products/filterSlice";
 
 const ShopProductsList = ({ products }) => {
+  const [grid, setGrid] = useState(true);
+  const [search, setSearch] = useState("");
   // console.log(products);
 
-  const [grid, setGrid] = useState(true);
+  const dispatch = useDispatch();
+  // This filteredProducts will be updated with the products and I will have to map through this to get the product that is being searched
+  const { filteredProducts } = useSelector((state) => state.filter);
+
+  // This will call the reducer function anytime the search value changes
+  useEffect(() => {
+    dispatch(FILTER_BY_SEARCH({ products, search }));
+  }, [dispatch, products, search]);
 
   return (
     <div className="product-list">
@@ -28,7 +39,7 @@ const ShopProductsList = ({ products }) => {
         </div>
 
         <div>
-          <Search />
+          <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
 
         <div className="sort">
@@ -47,7 +58,7 @@ const ShopProductsList = ({ products }) => {
         <p style={{ textAlign: "center" }}>No product found!</p>
       ) : (
         <div className={grid ? "grid-products" : "list-products"}>
-          {products.map((product) => {
+          {filteredProducts.map((product) => {
             return (
               <div key={product._id}>
                 <ProductItems {...product} grid={grid} product={product} />

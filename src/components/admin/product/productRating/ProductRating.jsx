@@ -9,11 +9,13 @@ const ProductRating = ({ averageRating, noOfRatings }) => {
           <StarRatings
             rating={averageRating}
             starRatedColor="#F6B01E"
+            starDimension="20px"
             starSpacing="2px"
-            numberOfStars={6}
+            numberOfStars={5}
             editing={false}
           />
-          ({noOfRatings})
+
+          {/* ({noOfRatings}) */}
         </div>
       )}
     </div>
