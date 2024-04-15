@@ -4,4 +4,15 @@
     border-top: 1px solid white;
     width: 10vw;
     margin: 0 auto;
+    height: fit-content;
+    /* align-items: first baseline; */
+}
+
+.shop-filter h4 {
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.shop-filter .isActive {
+    color: var(--primary-color);
 }
