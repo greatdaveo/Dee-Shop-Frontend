@@ -13,6 +13,6 @@
     border-bottom: 1px solid var(--primary-color);
 }
 
-.shop-filter .isActive {
+.shop-filter h4.isActive {
     color: var(--primary-color);
 }

@@ -9,7 +9,7 @@ const filterService = createSlice({
   initialState,
   reducers: {
     FILTER_BY_SEARCH(state, action) {
-      // This is destructured from the payload sent from the frontend of the SHopProductList Componen
+      // This is destructured from the payload sent from the frontend of the SHopProductList Component
       const { products, search } = action.payload;
       //   This will check if there is a product with the searched name or if there is a category for it
       const temporaryProducts = products.filter(
@@ -56,10 +56,22 @@ const filterService = createSlice({
       //   To update the filtered Product state
       state.filteredProducts = temporaryProducts;
     },
+
+    FILTER_BY_CATEGORY(state, action) {
+      const {products, category} = action.payload;
+      let temporaryProducts = []
+      if(category === "All") {
+        temporaryProducts = products;
+      } else {
+        temporaryProducts = products.filter((product) => product.category === category)
+      }
+      state.filteredProducts = temporaryProducts;
+    }
   },
 });
 
-export const { FILTER_BY_SEARCH, SORT_PRODUCTS } = filterService.actions;
+export const { FILTER_BY_SEARCH, SORT_PRODUCTS, FILTER_BY_CATEGORY } =
+  filterService.actions;
 
 export const selectedFilteredProducts = (state) =>
   state.filter.filteredProducts;

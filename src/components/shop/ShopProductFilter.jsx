@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/components/shop/ShopProductFilter.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { FILTER_BY_CATEGORY } from "../../redux/features/products/filterSlice";
 
 const ShopProductFilter = () => {
+  // For Active Link to know which page is active
+  const dispatch = useDispatch();
+
   const { products, minPrice, maxPrice } = useSelector(
     (state) => state.product
   );
@@ -16,7 +20,9 @@ const ShopProductFilter = () => {
   // console.log(allCategories);
 
   const filterProductsByCategory = (cat) => {
-    console.log(cat);
+    // console.log(cat);
+    setCategory(cat); // this will set the category to whatever is clicked by the user
+    dispatch(FILTER_BY_CATEGORY({ products, category: cat })); //this will call the FILTER_BY_CATEGORY reducer function
   };
 
   return (
@@ -29,7 +35,7 @@ const ShopProductFilter = () => {
             <h4
               key={i}
               type="button"
-              className={`${category}` === cat ? "isActive" : "mull"}
+              className={`${category}` === cat ? "isActive" : "null"}
               onClick={() => filterProductsByCategory(cat)}
             >
               &#8250; {cat}
