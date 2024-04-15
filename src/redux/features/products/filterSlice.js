@@ -9,7 +9,7 @@ const filterService = createSlice({
   initialState,
   reducers: {
     FILTER_BY_SEARCH(state, action) {
-      // This is destructured from the payload sent from the frontend
+      // This is destructured from the payload sent from the frontend of the SHopProductList Componen
       const { products, search } = action.payload;
       //   This will check if there is a product with the searched name or if there is a category for it
       const temporaryProducts = products.filter(
@@ -20,10 +20,47 @@ const filterService = createSlice({
       //   To update the filtered Product state
       state.filteredProducts = temporaryProducts;
     },
+
+    SORT_PRODUCTS(state, action) {
+      // This is destructured from the payload sent from the frontend of the SHopProductList Component
+      const { products, sort } = action.payload;
+      let temporaryProducts = [];
+      if (sort === "latest") {
+        temporaryProducts = products;
+      }
+
+      if (sort === "lowest-price") {
+        temporaryProducts = products.slice().sort((a, b) => {
+          return a.discountedPrice - b.discountedPrice;
+        });
+      }
+
+      if (sort === "highest-price") {
+        temporaryProducts = products.slice().sort((a, b) => {
+          return b.discountedPrice - a.discountedPrice;
+        });
+      }
+
+      if (sort === "a-z") {
+        temporaryProducts = products.slice().sort((a, b) => {
+          return a.name.localeCompare(b.name);
+        });
+      }
+
+      if (sort === "z-a") {
+        temporaryProducts = products.slice().sort((a, b) => {
+          return b.name.localeCompare(a.name);
+        });
+      }
+
+      //   To update the filtered Product state
+      state.filteredProducts = temporaryProducts;
+    },
   },
 });
 
-export const { FILTER_BY_SEARCH } = filterService.actions;
+export const { FILTER_BY_SEARCH, SORT_PRODUCTS } = filterService.actions;
+
 export const selectedFilteredProducts = (state) =>
   state.filter.filteredProducts;
 
