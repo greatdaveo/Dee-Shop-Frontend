@@ -58,20 +58,39 @@ const filterService = createSlice({
     },
 
     FILTER_BY_CATEGORY(state, action) {
-      const {products, category} = action.payload;
-      let temporaryProducts = []
-      if(category === "All") {
+      const { products, category } = action.payload;
+      let temporaryProducts = [];
+      if (category === "All") {
         temporaryProducts = products;
       } else {
-        temporaryProducts = products.filter((product) => product.category === category)
+        temporaryProducts = products.filter(
+          (product) => product.category === category
+        );
       }
       state.filteredProducts = temporaryProducts;
-    }
+    },
+
+    FILTER_BY_BRAND(state, action) {
+      const { products, brand } = action.payload;
+      let temporaryProducts = [];
+      if (brand === "All") {
+        temporaryProducts = products;
+      } else {
+        temporaryProducts = products.filter(
+          (product) => product.brand === brand
+        );
+      }
+      state.filteredProducts = temporaryProducts;
+    },
   },
 });
 
-export const { FILTER_BY_SEARCH, SORT_PRODUCTS, FILTER_BY_CATEGORY } =
-  filterService.actions;
+export const {
+  FILTER_BY_SEARCH,
+  SORT_PRODUCTS,
+  FILTER_BY_CATEGORY,
+  FILTER_BY_BRAND,
+} = filterService.actions;
 
 export const selectedFilteredProducts = (state) =>
   state.filter.filteredProducts;

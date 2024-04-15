@@ -9,10 +9,31 @@
 }
 
 .shop-filter h4 {
-    cursor: pointer;
+    /* cursor: pointer; */
     border-bottom: 1px solid var(--primary-color);
 }
 
 .shop-filter h4.isActive {
     color: var(--primary-color);
+}
+
+.shop-filter .brands h2 {
+    margin-bottom: 0rem;
+}
+
+.shop-filter select {
+    padding: 3px;
+    border: 1px solid white;
+    background: none;
+    color: white;
+    width: 10vw;
+    border-radius: 5px;
+    /* border-bottom: 1px solid var(--primary-color);
+     */
+    cursor: pointer;
+}
+
+.shop-filter .brands option {
+    background: #000;
+    cursor: pointer;
 }
