@@ -105,7 +105,31 @@ export const updateProductSlice = createAsyncThunk(
 const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    RESET_PROD(state) {
+      state.isError = false;
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = "";
+    },
+
+    // TO FILTER BY PRICE RANG
+    GET_PRICE_RANGE(state, action) {
+      const { products } = action.payload;
+      const array = [];
+      products.map((product) => {
+        // To get the products prices
+        const price = product.discountedPrice;
+        return array.push(price); // this will push all the prices of the products to the array
+      });
+      // To get the Max & Min Priced
+      const max = Math.max(...array);
+      const min = Math.min(...array);
+
+      state.minPrice = min;
+      state.maxPrice = max;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // For Create Product
@@ -202,9 +226,12 @@ const productSlice = createSlice({
       .addCase(updateProductSlice.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.isError = false;        
-        toast.success("Product updated successfully!!!")
-        console.log("Fulfilled products updated after editing:", action.payload);
+        state.isError = false;
+        toast.success("Product updated successfully!!!");
+        console.log(
+          "Fulfilled products updated after editing:",
+          action.payload
+        );
       })
 
       .addCase(updateProductSlice.rejected, (state, action) => {
@@ -217,7 +244,10 @@ const productSlice = createSlice({
   },
 });
 
-// To export the single product for editing 
+// To export the single product for editing
 export const singleProduct = (state) => state.product.product;
+
+// To export the reducer function
+export const { GET_PRICE_RANGE } = productSlice.actions;
 
 export default productSlice.reducer;

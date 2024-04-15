@@ -9,7 +9,7 @@
 }
 
 .shop-filter h4 {
-    /* cursor: pointer; */
+    cursor: pointer;
     border-bottom: 1px solid var(--primary-color);
 }
 
@@ -37,3 +37,8 @@
     background: #000;
     cursor: pointer;
 }
+
+.shop-filter .price h2{
+    margin-bottom: 0rem;
+}
+

@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   FILTER_BY_BRAND,
   FILTER_BY_CATEGORY,
+  FILTER_BY_PRICE,
 } from "../../redux/features/products/filterSlice";
+import { GET_PRICE_RANGE } from "../../redux/features/products/productSlice";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const ShopProductFilter = () => {
   // For Active Link to know which page is active
@@ -16,6 +20,7 @@ const ShopProductFilter = () => {
 
   const [category, setCategory] = useState("All");
   const [brand, setBrand] = useState("All");
+  const [price, setPrice] = useState([50, 1000]);
 
   const allCategories = [
     "All",
@@ -41,6 +46,17 @@ const ShopProductFilter = () => {
   useEffect(() => {
     dispatch(FILTER_BY_BRAND({ products, brand }));
   }, [dispatch, products, brand]);
+
+  // This will call the FILTER_BY_PRICE reducer function anytime the price range option changes
+  useEffect(() => {
+    dispatch(FILTER_BY_PRICE({ products, price }));
+  }, [dispatch, products, price]);
+
+  // This will call the GET_PRICE_RANGE reducer function anytime the price range option changes
+  useEffect(() => {
+    dispatch(GET_PRICE_RANGE({ products }));
+  }, [dispatch, products]);
+  // console.log(minPrice, maxPrice);
 
   return (
     <div className="shop-filter">
@@ -72,6 +88,27 @@ const ShopProductFilter = () => {
             );
           })}
         </select>
+      </div>
+
+      <div className="price">
+        <h2>Price</h2>
+        <Slider
+          range
+          marks={{
+            1: `${price[0]}`,
+            1000: `${price[1]}`,
+          }}
+          min={minPrice}
+          max={maxPrice}
+          defaultValue={[minPrice, maxPrice]}
+          tipFormatter={(value) => `$${value}`}
+          tipProps={{
+            placement: "top",
+            visible: false,
+          }}
+          value={price}
+          onChange={(price) => setPrice(price)}
+        />
       </div>
     </div>
   );
