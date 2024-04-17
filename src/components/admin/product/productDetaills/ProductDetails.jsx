@@ -170,7 +170,11 @@ const ProductDetails = () => {
               ></div>
             </div>
           </div>
+
+          {/*Product Review Section*/}
+          <h3>Product Review</h3>
         </section>
+
         <div>
           <Footer />
         </div>
