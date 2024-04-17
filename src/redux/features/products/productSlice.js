@@ -67,7 +67,7 @@ export const deleteProductSlice = createAsyncThunk(
   }
 );
 
-// To Edit a Product
+// To Edit a Single Product and also use it to get the product details of a single product
 export const editProductSlice = createAsyncThunk(
   "products/edit-product",
   async (id, thunkAPI) => {

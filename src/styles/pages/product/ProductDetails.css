@@ -1,0 +1,28 @@
+.pd {
+    padding: 2rem 5rem;
+    width: fit-content;
+    /* margin: 0 auto; */
+}
+
+.pd .pd-content .main-img {
+    width: 30vw;
+    margin-top: 1rem;
+}
+
+.pd .pd-content .small-img {
+    /* border: 1px solid gray; */
+    width: fit-content;
+    /* border-style: dotted; */
+}
+
+.pd .pd-content .small-img img {
+    width: 10vw;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.pd-content .small-img .activeImg {
+    border: 1px dotted gray;
+}
+
+
