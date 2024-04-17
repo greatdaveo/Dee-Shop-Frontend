@@ -10,6 +10,7 @@ import {
   FILTER_BY_SEARCH,
   SORT_PRODUCTS,
 } from "../../redux/features/products/filterSlice";
+import ReactPaginate from "react-paginate";
 
 const ShopProductsList = ({ products }) => {
   const [grid, setGrid] = useState(true);
@@ -31,6 +32,25 @@ const ShopProductsList = ({ products }) => {
     dispatch(SORT_PRODUCTS({ products, sort }));
   }, [dispatch, products, sort]);
 
+  // For Pagination
+  const itemsPerPage = 8;
+
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const endOffset = itemOffset + itemsPerPage;
+  // const currentItems = products.slice(itemOffset, endOffset);
+  const currentItems = Array.isArray(products)
+    ? filteredProducts.slice(itemOffset, endOffset)
+    : [];
+
+  const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % filteredProducts.length;
+
+    setItemOffset(newOffset);
+  };
+
   return (
     <div className="product-list">
       <div className="top">
@@ -43,7 +63,7 @@ const ShopProductsList = ({ products }) => {
           <FaListAlt size={24} color="gold" onClick={() => setGrid(false)} />
 
           <p>
-            <b>{products.length} ~ Products Found</b>
+            <b>{currentItems.length} ~ Products Found</b>
           </p>
         </div>
 
@@ -67,7 +87,7 @@ const ShopProductsList = ({ products }) => {
         <p style={{ textAlign: "center" }}>No product found!</p>
       ) : (
         <div className={grid ? "grid-products" : "list-products"}>
-          {filteredProducts.map((product) => {
+          {currentItems.map((product) => {
             return (
               <div key={product._id}>
                 <ProductItems {...product} grid={grid} product={product} />
@@ -76,6 +96,24 @@ const ShopProductsList = ({ products }) => {
           })}
         </div>
       )}
+
+      <div className="pagination-container">
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="Next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="< Prev"
+          renderOnZeroPageCount={null}
+          className="pagination"
+          // containerClassName="pagination-container"
+          pageLinkClassName="pageLinkClassName"
+          previousLinkClassName="previousLinkClassName"
+          nextLinkClassName="nextLinkClassName"
+          activeLinkClassName="activeLinkClassName"
+        />
+      </div>
     </div>
   );
 };

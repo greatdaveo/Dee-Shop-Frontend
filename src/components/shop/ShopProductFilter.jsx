@@ -58,6 +58,13 @@ const ShopProductFilter = () => {
   }, [dispatch, products]);
   // console.log(minPrice, maxPrice);
 
+  // TO SET THE CLEAR FILTER BUTTON
+  const clearFilter = () => {
+    setCategory("All");
+    setBrand("All");
+    setPrice([minPrice, maxPrice]);
+  };
+
   return (
     <div className="shop-filter">
       <h2>Categories</h2>
@@ -110,6 +117,10 @@ const ShopProductFilter = () => {
           onChange={(price) => setPrice(price)}
         />
       </div>
+
+      <button className="btn" onClick={clearFilter}>
+        CLEAR
+      </button>
     </div>
   );
 };

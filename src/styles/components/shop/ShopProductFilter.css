@@ -42,3 +42,14 @@
     margin-bottom: 0rem;
 }
 
+.shop-filter .btn {
+    padding: 0.5rem 1rem;
+    width: 10vw;
+    margin: 0 auto;
+    margin-top: 2rem;
+    border: none;
+    background: red;
+    color: white;
+    font-weight: 800;
+    border-radius: 5px;
+}

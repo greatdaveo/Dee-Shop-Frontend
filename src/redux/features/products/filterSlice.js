@@ -4,7 +4,7 @@ const initialState = {
   filteredProducts: [],
 };
 
-const filterService = createSlice({
+const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
@@ -101,9 +101,9 @@ export const {
   FILTER_BY_CATEGORY,
   FILTER_BY_BRAND,
   FILTER_BY_PRICE,
-} = filterService.actions;
+} = filterSlice.actions;
 
-export const selectedFilteredProducts = (state) =>
-  state.filter.filteredProducts;
+// export const selectedFilteredProducts = (state) =>
+//   state.filter.filteredProducts;
 
-export default filterService.reducer;
+export default filterSlice.reducer;
