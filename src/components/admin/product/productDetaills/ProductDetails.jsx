@@ -20,6 +20,24 @@ const ProductDetails = () => {
     dispatch(editProductSlice(id));
   }, [dispatch, id]);
 
+  //   To set up the image slider feature using the image index state
+  const slideLength = product?.image?.length;
+  const nextSlide = () => {
+    setImageIndex(imageIndex === slideLength - 1 ? 0 : imageIndex + 1);
+  };
+
+  // To control the seconds to switch the image
+  let slideInterval;
+  useEffect(() => {
+    if (product?.image?.length > 1) {
+      const autoSlide = () => {
+        slideInterval = setInterval(nextSlide, 3000);
+      };
+      autoSlide();
+    }
+    return () => clearInterval(slideInterval);
+  }, [imageIndex, slideInterval, product]);
+
   return (
     <div>
       {isLoading && <Loader />}
