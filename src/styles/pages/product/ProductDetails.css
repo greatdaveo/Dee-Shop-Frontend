@@ -1,7 +1,12 @@
 .pd {
-    padding: 2rem 5rem;
+    padding: 1rem 5rem;
     width: fit-content;
     /* margin: 0 auto; */
+}
+
+.pd .pd-content {
+    display: flex;
+    gap: 0.5rem;
 }
 
 .pd .pd-content .main-img {
@@ -25,4 +30,70 @@
     border: 1px dotted gray;
 }
 
+.pd-text-content {
+    /* border: 1px solid gray; */
+    height: fit-content;
+    padding: 0rem 5rem;
+    /* border-left: 1px solid gray; */
+}
 
+.pd-text-content h3 {
+    border-bottom: 1px dotted gray;
+    width: 30vw;
+    margin: 0 auto;
+}
+
+.pd-text-content .text {
+    display: flex;
+    justify-content: space-between;  
+    border-bottom: 1px dotted gray;
+    width: 30vw;
+    margin: 0 auto;
+}
+
+.pd-text-content .text p {
+    margin-bottom: 0rem;
+}
+
+.pd-text-content .text .p {
+    color: rgb(238, 51, 51);
+    font-weight: 700;
+}
+
+.btn-cover {
+    margin-top: 1rem;
+}
+
+.btn-cover .btn-1 {
+    padding: 0.5rem 0.8rem;
+    border: none;
+    background: #0066d4;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-cover .btn-2 {
+    padding: 0.5rem 0.8rem;
+    margin-left: 0.5rem;
+    border: none;
+    background: rgb(197, 61, 61);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-cover .btn-3 {
+    padding: 0.5rem 0.8rem;
+    margin-left: 0.5rem;
+    border: none;
+    background: rgb(197, 61, 61);
+    color: white;
+    font-weight: 600;
+}
+
+.pd-text-content .description {
+    /* display: flex;
+    flex-direction: column; */
+    width: 30vw;
+    margin: 0 auto;
+    gap: 0rem;
+}

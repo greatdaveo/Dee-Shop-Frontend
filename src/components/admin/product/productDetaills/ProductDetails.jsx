@@ -7,6 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../../loader/loader";
 import { editProductSlice } from "../../../../redux/features/products/productSlice";
 import { Link } from "react-router-dom";
+import ProductRating from "../productRating/ProductRating";
+import { calculateAverageRating } from "../../../../utils";
+import { toast } from "react-toastify";
+import DOMPurify from "dompurify";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -37,6 +41,9 @@ const ProductDetails = () => {
     }
     return () => clearInterval(slideInterval);
   }, [imageIndex, slideInterval, product]);
+
+  // To calculate the ratings for each product
+  const averageRating = calculateAverageRating(product?.ratings);
 
   return (
     <div>
@@ -73,6 +80,94 @@ const ProductDetails = () => {
                   );
                 })}
               </div>
+            </div>
+
+            <div className="pd-text-content">
+              <h3>{product?.name}</h3>
+
+              <ProductRating
+                averageRating={averageRating}
+                noOfRatings={product?.ratings?.length}
+              />
+
+              <div className="text">
+                <p>
+                  <b>Price</b>
+                </p>
+
+                <p className="p">{` $${product?.discountedPrice}`}</p>
+              </div>
+
+              <div className="text">
+                <p>
+                  <b>SKU</b>
+                </p>
+
+                <p>{`${product?.sku}`}</p>
+              </div>
+
+              <div className="text">
+                <p>
+                  <b>Category</b>
+                </p>
+
+                <p>{` ${product?.category}`}</p>
+              </div>
+
+              <div className="text">
+                <p>
+                  <b>Brand</b>
+                </p>
+
+                <p>{`${product?.brand}`}</p>
+              </div>
+
+              <div className="text">
+                <p>
+                  <b>Color</b>
+                </p>
+
+                <p>{`${product?.color}`}</p>
+              </div>
+
+              <div className="text">
+                <p>
+                  <b>Quantity in Stock</b>
+                </p>
+
+                <p>{` ${product?.quantity}`}</p>
+              </div>
+
+              <div className="text">
+                <p>
+                  <b>Sold</b>
+                </p>
+
+                <p>{` ${product?.sold}`}</p>
+              </div>
+
+              <div className="btn-cover">
+                {product?.quantity > 0 ? (
+                  <button className="btn-1">ADD TO CART</button>
+                ) : (
+                  <button
+                    className="btn-2"
+                    onClick={() =>
+                      toast.error("Sorry, product is out of stock!")
+                    }
+                  >
+                    OUT OF STOCK
+                  </button>
+                )}
+                <button className="btn-3">ADD TO WISHLIST</button>
+              </div>
+
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(product?.description),
+                }}
+                className="description"
+              ></div>
             </div>
           </div>
         </section>
