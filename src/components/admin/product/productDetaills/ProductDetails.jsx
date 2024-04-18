@@ -11,6 +11,7 @@ import ProductRating from "../productRating/ProductRating";
 import { calculateAverageRating } from "../../../../utils";
 import { toast } from "react-toastify";
 import DOMPurify from "dompurify";
+import { ADD_TO_CART } from "../../../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -44,6 +45,11 @@ const ProductDetails = () => {
 
   // To calculate the ratings for each product
   const averageRating = calculateAverageRating(product?.ratings);
+
+  //   To add to cart
+  const addToCart = (product) => {
+    dispatch(ADD_TO_CART(product));
+  };
 
   return (
     <div>
@@ -148,7 +154,9 @@ const ProductDetails = () => {
 
               <div className="btn-cover">
                 {product?.quantity > 0 ? (
-                  <button className="btn-1">ADD TO CART</button>
+                  <button className="btn-1" onClick={() => addToCart(product)}>
+                    ADD TO CART
+                  </button>
                 ) : (
                   <button
                     className="btn-2"
