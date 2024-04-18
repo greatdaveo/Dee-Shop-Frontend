@@ -26,7 +26,7 @@ const cartSlice = createSlice({
         action.payload._id
       );
 
-      // To get the index of the product
+      // To get the index of the product in the cart
       const productIndex = state.cartItems.findIndex(
         (item) => item._id === action.payload._id
       );
@@ -56,9 +56,36 @@ const cartSlice = createSlice({
       //   To save the cart to Local Storage
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+
+    DECREASE_CART(state, action) {
+      // To get the index of the product in the cart
+      const productIndex = state.cartItems.findIndex(
+        (item) => item._id === action.payload._id
+      );
+
+      if (state.cartItems[productIndex].cartQuantity > 1) {
+        // if the cart quantity is greater than 1
+        state.cartItems[productIndex].cartQuantity -= 1;
+        toast.success(`${action.payload.name} decreased by 1!`, {
+          position: "top-left",
+        });
+      } else if (state.cartItems[productIndex].cartQuantity === 1) {
+        // if the cart quantity is equal to 1
+        const newCartItem = state.cartItems.filter(
+          (item) => item._id !== action.payload._id
+        );
+        state.cartItems = newCartItem;
+        toast.success(`${action.payload.name} removed from cart!`, {
+          position: "top-left",
+        });
+      }
+
+      //   To save the cart item to Local Storage
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
   },
 });
 
-export const { ADD_TO_CART } = cartSlice.actions;
+export const { ADD_TO_CART, DECREASE_CART } = cartSlice.actions;
 
 export default cartSlice.reducer;

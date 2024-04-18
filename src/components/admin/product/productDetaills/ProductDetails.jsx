@@ -11,7 +11,10 @@ import ProductRating from "../productRating/ProductRating";
 import { calculateAverageRating } from "../../../../utils";
 import { toast } from "react-toastify";
 import DOMPurify from "dompurify";
-import { ADD_TO_CART } from "../../../../redux/features/cart/cartSlice";
+import {
+  ADD_TO_CART,
+  DECREASE_CART,
+} from "../../../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -49,6 +52,11 @@ const ProductDetails = () => {
   //   To add to cart
   const addToCart = (product) => {
     dispatch(ADD_TO_CART(product));
+  };
+
+  // To decrease cart
+  const decreaseCart = (product) => {
+    dispatch(DECREASE_CART(product));
   };
 
   // To control the cart counting button
@@ -163,7 +171,12 @@ const ProductDetails = () => {
 
               {isAddedToCart < 0 ? null : (
                 <div className="count-cart-btn">
-                  <button className="count-btn-1">-</button>
+                  <button
+                    className="count-btn-1"
+                    onClick={() => decreaseCart(product)}
+                  >
+                    -
+                  </button>
                   <p>
                     <b>{cartProduct.cartQuantity}</b>
                   </p>
