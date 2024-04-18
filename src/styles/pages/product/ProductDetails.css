@@ -64,6 +64,27 @@
     font-weight: 700;
 }
 
+.count-cart-btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0rem;
+    margin-bottom: -1.5rem;
+}
+.count-btn-1 {    
+    margin-right: 0.2rem;
+    border: none;
+    background: rgb(204, 201, 201);
+    font-weight: 700;
+}
+
+.count-btn-2 {
+    margin-left: 0.2rem;
+    border: none;
+    background: rgb(204, 201, 201);
+    font-weight: 700;
+}
+
 .btn-cover {
     margin-top: 1rem;
 }

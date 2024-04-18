@@ -51,6 +51,15 @@ const ProductDetails = () => {
     dispatch(ADD_TO_CART(product));
   };
 
+  // To control the cart counting button
+  const { cartItems } = useSelector((state) => state.cart);
+  // This will find the product id that matches the params id (cartProduct will give details about the product)
+  const cartProduct = cartItems.find((cart) => cart._id === id);
+  // To check if the product with the id has been added to cart items
+  const isAddedToCart = cartItems.findIndex((cart) => {
+    return cart._id === id;
+  });
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -151,6 +160,21 @@ const ProductDetails = () => {
 
                 <p>{` ${product?.sold}`}</p>
               </div>
+
+              {isAddedToCart < 0 ? null : (
+                <div className="count-cart-btn">
+                  <button className="count-btn-1">-</button>
+                  <p>
+                    <b>{cartProduct.cartQuantity}</b>
+                  </p>
+                  <button
+                    className="count-btn-2"
+                    onClick={() => addToCart(product)}
+                  >
+                    +
+                  </button>
+                </div>
+              )}
 
               <div className="btn-cover">
                 {product?.quantity > 0 ? (
