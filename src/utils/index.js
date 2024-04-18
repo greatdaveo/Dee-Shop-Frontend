@@ -31,3 +31,13 @@ export function calculateAverageRating(ratings) {
 
   return totalStars / ratings.length; //This is the calculation of the averageRatings
 }
+
+// To get the cart quantity by the id of a product
+export const getCartQuantityById = (products, id) => {
+  for (let i = 0; i < products.length; i++) {
+    if (products[i]._id === id) {
+      return products[i].cartQuantity;
+    }
+  }
+  return 0; // If the _id is not found, return 0 or any default value
+};
