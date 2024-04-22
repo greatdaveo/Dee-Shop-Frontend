@@ -107,6 +107,7 @@ const cartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
 
+    // To calculate the total cart
     CALCULATE_TOTAL_QUANTITY(state, action) {
       const array = [];
       state.cartItems?.map((item) => {
@@ -125,6 +126,22 @@ const cartSlice = createSlice({
       //   To save the cart item to Local Storage
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+
+    // To calculate the total amount
+    CALCULATE_SUBTOTAL(state, action) {
+      const array = [];
+      state.cartItems?.map((item) => {
+        const { discountedPrice, cartQuantity } = item;
+        const cartItemAmount = discountedPrice * cartQuantity;
+        return array.push(cartItemAmount);
+      });
+
+      const totalAmount = array.reduce((a, b) => {
+        return a + b;
+      });
+
+      state.cartTotalAmount = totalAmount;
+    },
   },
 });
 
@@ -134,6 +151,7 @@ export const {
   REMOVE_FROM_CART,
   CLEAR_CART,
   CALCULATE_TOTAL_QUANTITY,
+  CALCULATE_SUBTOTAL,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

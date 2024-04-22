@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import {
   ADD_TO_CART,
+  CALCULATE_SUBTOTAL,
   CALCULATE_TOTAL_QUANTITY,
   CLEAR_CART,
   DECREASE_CART,
@@ -20,7 +21,9 @@ const CartPage = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { cartItems, cartTotalQuantity } = useSelector((state) => state.cart);
+  const { cartItems, cartTotalQuantity, cartTotalAmount } = useSelector(
+    (state) => state.cart
+  );
 
   //   To add to cart
   const increaseCart = (cart) => {
@@ -42,6 +45,7 @@ const CartPage = () => {
 
   useEffect(() => {
     dispatch(CALCULATE_TOTAL_QUANTITY());
+    dispatch(CALCULATE_SUBTOTAL());
   }, [dispatch, cartItems]);
 
   return (
@@ -144,13 +148,20 @@ const CartPage = () => {
             </button>
           </div>
 
-          <div className="checkout">
+          <div className="checkout-text">
             <Link to="/shop">&larr; Continue shopping</Link>
 
             <div className="cart-checkout">
               <p>
                 <b>{`Cart item(s): ${cartTotalQuantity}`}</b>
               </p>
+
+              <div className="checkout-text">
+                <h4>
+                  Subtotal:
+                  <span> ${cartTotalAmount?.toFixed(2)}</span>
+                </h4>
+              </div>
             </div>
           </div>
         </div>

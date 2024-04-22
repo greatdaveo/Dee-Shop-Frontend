@@ -76,7 +76,7 @@
 .cart-cover .summary {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
     margin: 0 auto;
 }
 
@@ -87,4 +87,20 @@
     background: rgb(197, 61, 61);
     color: white;
     font-weight: 700;
+}
+
+.cart-cover .cart-checkout p {
+    margin-bottom: -1.5rem;
+}
+
+.cart-cover .checkout-text {
+    box-shadow: #333;
+}
+
+.cart-cover .checkout-text{
+    margin-top: -1rem;
+}
+
+.cart-cover .checkout-text span {
+    color: rgb(238, 51, 51);
 }
