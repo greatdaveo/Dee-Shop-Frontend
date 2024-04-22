@@ -106,6 +106,25 @@ const cartSlice = createSlice({
       //   To save the cart item to Local Storage
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+
+    CALCULATE_TOTAL_QUANTITY(state, action) {
+      const array = [];
+      state.cartItems?.map((item) => {
+        const { cartQuantity } = item;
+        const quantity = cartQuantity;
+        return array.push(quantity);
+      });
+
+      // To add all the the quantity
+      const totalQuantity = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
+
+      state.cartTotalQuantity = totalQuantity;
+
+      //   To save the cart item to Local Storage
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
   },
 });
 

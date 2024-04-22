@@ -5,9 +5,10 @@ import { FaTrashAlt } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ADD_TO_CART,
+  CALCULATE_TOTAL_QUANTITY,
   CLEAR_CART,
   DECREASE_CART,
   REMOVE_FROM_CART,
@@ -17,8 +18,9 @@ const CartPage = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems, cartTotalQuantity } = useSelector((state) => state.cart);
 
   //   To add to cart
   const increaseCart = (cart) => {
@@ -37,6 +39,10 @@ const CartPage = () => {
   const clearCart = () => {
     dispatch(CLEAR_CART());
   };
+
+  useEffect(() => {
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  }, [dispatch, cartItems]);
 
   return (
     <div>
@@ -132,12 +138,20 @@ const CartPage = () => {
         </div>
 
         <div className="summary">
-          <button onClick={clearCart} className="btn">
-            CLEAR CART
-          </button>
+          <div>
+            <button onClick={clearCart} className="summary-btn">
+              CLEAR CART
+            </button>
+          </div>
 
           <div className="checkout">
             <Link to="/shop">&larr; Continue shopping</Link>
+
+            <div className="cart-checkout">
+              <p>
+                <b>{`Cart item(s): ${cartTotalQuantity}`}</b>
+              </p>
+            </div>
           </div>
         </div>
       </section>

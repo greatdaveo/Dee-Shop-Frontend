@@ -59,4 +59,6 @@ nav .cart svg {
 
 nav .cart b {
   position: absolute;
+  color: var(--primary-color);
+  font-weight: bold;
 }
