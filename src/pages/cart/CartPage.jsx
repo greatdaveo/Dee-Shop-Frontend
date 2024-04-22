@@ -13,6 +13,7 @@ import {
   CLEAR_CART,
   DECREASE_CART,
   REMOVE_FROM_CART,
+  saveCartDBSlice,
 } from "../../redux/features/cart/cartSlice";
 
 const CartPage = () => {
@@ -28,19 +29,39 @@ const CartPage = () => {
   //   To add to cart
   const increaseCart = (cart) => {
     dispatch(ADD_TO_CART(cart));
+    // To Sync and save the Cart to DB
+    dispatch(
+      saveCartDBSlice({
+        cartItems: JSON.parse(localStorage.getItem("cartItems")),
+      })
+    );
   };
 
   // To decrease cart
   const decreaseCart = (cart) => {
     dispatch(DECREASE_CART(cart));
+    // To Sync and save the Cart to DB
+    dispatch(
+      saveCartDBSlice({
+        cartItems: JSON.parse(localStorage.getItem("cartItems")),
+      })
+    );
   };
 
   const removeFromCart = (cart) => {
     dispatch(REMOVE_FROM_CART(cart));
+    // To Sync and save the Cart to DB
+    dispatch(
+      saveCartDBSlice({
+        cartItems: JSON.parse(localStorage.getItem("cartItems")),
+      })
+    );
   };
 
   const clearCart = () => {
     dispatch(CLEAR_CART());
+    // To Sync and save the Cart to DB
+    dispatch(saveCartDBSlice({ cartItems: [] }));
   };
 
   useEffect(() => {

@@ -14,6 +14,7 @@ import DOMPurify from "dompurify";
 import {
   ADD_TO_CART,
   DECREASE_CART,
+  saveCartDBSlice,
 } from "../../../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
@@ -52,11 +53,23 @@ const ProductDetails = () => {
   //   To add to cart
   const addToCart = (product) => {
     dispatch(ADD_TO_CART(product));
+    // To Sync and save the Cart to DB
+    dispatch(
+      saveCartDBSlice({
+        cartItems: JSON.parse(localStorage.getItem("cartItems")),
+      })
+    );
   };
 
   // To decrease cart
   const decreaseCart = (product) => {
     dispatch(DECREASE_CART(product));
+    // To Sync and save the Cart to DB
+    dispatch(
+      saveCartDBSlice({
+        cartItems: JSON.parse(localStorage.getItem("cartItems")),
+      })
+    );
   };
 
   // To control the cart counting button

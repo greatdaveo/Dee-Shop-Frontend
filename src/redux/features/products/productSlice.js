@@ -130,6 +130,7 @@ const productSlice = createSlice({
       state.maxPrice = max;
     },
   },
+
   extraReducers: (builder) => {
     builder
       // For Create Product

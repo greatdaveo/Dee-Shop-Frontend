@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCartQuantityById } from "../../../utils";
 import { toast } from "react-toastify";
+import cartService from "./cartService";
 // import {getCartQuantityById} from "..///"
 
 const initialState = {
@@ -14,6 +15,23 @@ const initialState = {
   isSuccess: false,
   message: "",
 };
+
+// For Get Cart
+export const saveCartDBSlice = createAsyncThunk(
+  "cart/save-cart",
+  async (cartData, thunkAPI) => {
+    try {
+      return await cartService.saveCartToDB(cartData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -142,6 +160,29 @@ const cartSlice = createSlice({
 
       state.cartTotalAmount = totalAmount;
     },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      // For Save Cart DB
+      .addCase(saveCartDBSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(saveCartDBSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.products = action.payload;
+        console.log("Fulfilled created cart:", action.payload);
+      })
+
+      .addCase(saveCartDBSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        // console.log("Error Creating Cart:", action.payload);
+      });
   },
 });
 
