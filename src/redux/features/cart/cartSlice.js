@@ -83,9 +83,38 @@ const cartSlice = createSlice({
       //   To save the cart item to Local Storage
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+
+    REMOVE_FROM_CART(state, action) {
+      const newCartItem = state.cartItems.filter(
+        (item) => item._id !== action.payload._id
+      );
+      state.cartItems = newCartItem;
+      toast.success(`${action.payload.name} removed from cart!`, {
+        position: "top-left",
+      });
+
+      //   To save the cart item to Local Storage
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
+
+    CLEAR_CART(state, action) {
+      state.cartItems = [];
+      toast.success("Cart cleared!", {
+        position: "top-left",
+      });
+
+      //   To save the cart item to Local Storage
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
   },
 });
 
-export const { ADD_TO_CART, DECREASE_CART } = cartSlice.actions;
+export const {
+  ADD_TO_CART,
+  DECREASE_CART,
+  REMOVE_FROM_CART,
+  CLEAR_CART,
+  CALCULATE_TOTAL_QUANTITY,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

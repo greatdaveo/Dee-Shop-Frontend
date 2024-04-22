@@ -14,6 +14,11 @@
     /* gap: 50rem; */
 }
 
+.table thead {
+    border-top: 2px solid gold;
+    border-bottom: 2px solid gold;
+}
+
 .table table {
     width: 100%;
     margin: 0 auto;

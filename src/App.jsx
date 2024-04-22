@@ -16,7 +16,7 @@ import AdminOnlyRoute from "./protectedRoute/AdminOnlyRoute";
 import PageNotFound from "./pages/404/PageNotFound";
 import ShopProductsPage from "./pages/shop/ShopProductsPage";
 import ProductDetails from "./components/admin/product/productDetaills/ProductDetails";
-import Cart from "./pages/cart/Cart";
+import CartPage from "./pages/cart/CartPage";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -52,7 +52,7 @@ function App() {
             path="/shop/product-details/:id"
             element={<ProductDetails />}
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<CartPage />} />
 
           <Route
             path="/admin/*"

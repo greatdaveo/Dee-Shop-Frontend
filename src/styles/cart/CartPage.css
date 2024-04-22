@@ -1,0 +1,90 @@
+.cart-cover {
+    padding: 1rem 10rem;
+    margin: 0 auto;
+    width: 70vw;
+}
+
+.table thead {
+    border-top: 2px solid gold;
+    border-bottom: 2px solid gold;
+}
+
+.table {
+    display: flex;
+    align-items: center;   
+}
+
+.table table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.table th, table td {
+    vertical-align: top;
+      text-align: left;
+      padding: 2px;
+}
+
+/* For the Counting Button */
+
+.table .count-cart-btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0rem;
+    margin-bottom: 0rem;
+    vertical-align: top;
+}
+
+.table .count-btn-1 {    
+    margin-right: 0.2rem;
+    border: none;
+    background: rgb(204, 201, 201);
+    font-weight: 700;
+    padding: 0.1rem 0.3rem;
+}
+
+.table .count-btn-2 {
+    margin-left: 0.2rem;
+    border: none;
+    background: rgb(204, 201, 201);
+    font-weight: 700;
+    padding: 0.1rem 0.3rem;
+}
+
+/* //////////////////// */
+
+ .table tr:nth-child(even) {
+    background: #ccc;
+    border-bottom: 1px solid #333;
+ }
+
+.table button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.table .td-icons {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.cart-cover .summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+
+.cart-cover .summary .btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: rgb(197, 61, 61);
+    color: white;
+    font-weight: 700;
+}
