@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCartQuantityById } from "../../../utils";
 import { toast } from "react-toastify";
 import cartService from "./cartService";
-// import {getCartQuantityById} from "..///"
+
+const FRONTEND_URL = import.meta.env.VITE_Frontend_Url;
 
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
@@ -16,12 +17,29 @@ const initialState = {
   message: "",
 };
 
-// For Get Cart
+// For Create and save Cart in DB
 export const saveCartDBSlice = createAsyncThunk(
   "cart/save-cart",
   async (cartData, thunkAPI) => {
     try {
       return await cartService.saveCartToDB(cartData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// For Get Cart
+export const getCartDBSlice = createAsyncThunk(
+  "cart/get-cart",
+  async (_, thunkAPI) => {
+    try {
+      return await cartService.getCartDB();
     } catch (error) {
       const message =
         (error.message && error.response.data && error.message.data.message) ||
@@ -182,6 +200,33 @@ const cartSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         // console.log("Error Creating Cart:", action.payload);
+      })
+
+      // For Get Cart in  DB
+      .addCase(getCartDBSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(getCartDBSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        localStorage.setItem("cartItems", JSON.stringify(action.payload));
+        // if the cart is greater than 0, navigate the user to the cart page
+        if (action.payload.length > 0) {
+          window.location.href = FRONTEND_URL + "/cart";
+        } else {
+          // if the cart is empty, navigate the user to the home page
+          window.location.href = FRONTEND_URL;
+        }
+        console.log("Fulfilled cart from DB:", action.payload);
+      })
+
+      .addCase(getCartDBSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        // console.log("Error get Cart:", action.payload);
       });
   },
 });
