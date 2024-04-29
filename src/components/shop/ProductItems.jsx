@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { calculateAverageRating, shortenText } from "../../utils";
 import { toast } from "react-toastify";
 import ProductRating from "../admin/product/productRating/ProductRating";
+import {
+  ADD_TO_CART,
+  saveCartDBSlice,
+} from "../../redux/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductItems = ({
   product,
@@ -13,8 +18,20 @@ const ProductItems = ({
   regularPrice,
   discountedPrice,
 }) => {
+  const dispatch = useDispatch();
   // To calculate the ratings for each product
   const averageRating = calculateAverageRating(product?.ratings);
+
+  //   To add to cart
+  const addToCart = (product) => {
+    dispatch(ADD_TO_CART(product));
+    // To Sync and save the Cart to DB
+    dispatch(
+      saveCartDBSlice({
+        cartItems: JSON.parse(localStorage.getItem("cartItems")),
+      })
+    );
+  };
 
   return (
     <div className={grid ? "grid" : "list"}>
@@ -40,7 +57,9 @@ const ProductItems = ({
         <h4>{shortenText(name, 15)}</h4>
 
         {product?.quantity > 0 ? (
-          <button className="btn-1">Add To Cart</button>
+          <button className="btn-1" onClick={() => addToCart(product)}>
+            Add To Cart
+          </button>
         ) : (
           <button
             className="btn-2"
