@@ -212,6 +212,7 @@ const cartSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         localStorage.setItem("cartItems", JSON.stringify(action.payload));
+        // When the user login this is to check if the user has an cart item saved in the DB
         // if the cart is greater than 0, navigate the user to the cart page
         if (action.payload.length > 0) {
           window.location.href = FRONTEND_URL + "/cart";

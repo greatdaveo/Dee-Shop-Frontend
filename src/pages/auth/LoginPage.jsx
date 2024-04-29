@@ -8,6 +8,7 @@ import Loader from "../../components/loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, loginSlice } from "../../redux/features/auth/authSlice";
 import Footer from "../../components/Footer";
+import { getCartDBSlice } from "../../redux/features/cart/cartSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,8 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isSuccess && isLoggedIn) {
-      navigate("/");
+      // navigate("/");
+      dispatch(getCartDBSlice()); // This has been re-written in  cartSlice
     }
 
     dispatch(RESET_AUTH());
