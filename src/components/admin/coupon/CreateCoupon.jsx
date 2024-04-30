@@ -52,7 +52,7 @@ const createCoupon = () => {
             <label>Coupon Name: </label> <br />
             <input
               type="text"
-              placeholder="Category Name"
+              placeholder="Coupon Name"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}

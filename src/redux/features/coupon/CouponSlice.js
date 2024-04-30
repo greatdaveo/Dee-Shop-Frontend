@@ -75,7 +75,6 @@ export const deleteCouponSlice = createAsyncThunk(
         (error.message && error.response.data && error.message.data.message) ||
         error.message ||
         error.toString();
-      console.log(thunkAPI);
 
       return thunkAPI.rejectWithValue(message);
     }
@@ -85,7 +84,11 @@ export const deleteCouponSlice = createAsyncThunk(
 const CouponSlice = createSlice({
   name: "coupon",
   initialState,
-  reducers: {},
+  reducers: {
+    REMOVE_COUPON(state, action) {
+      state.coupon = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // For Create Coupon
@@ -119,7 +122,7 @@ const CouponSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         state.coupons = action.payload;
-        console.log("All Coupons:", action.payload);
+        // console.log("All Coupons:", action.payload);
       })
 
       .addCase(getAllCouponSlice.rejected, (state, action) => {
@@ -140,7 +143,7 @@ const CouponSlice = createSlice({
         state.isError = false;
         state.coupon = action.payload;
         toast.success("Coupon applied!");
-        console.log("Single Coupons:", action.payload);
+        // console.log("Single Coupons:", action.payload);
       })
 
       .addCase(getSingleCouponSlice.rejected, (state, action) => {
@@ -160,7 +163,7 @@ const CouponSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         toast.success(action.payload);
-        console.log("Deleted Coupon result:", action.payload);
+        // console.log("Deleted Coupon result:", action.payload);
       })
 
       .addCase(deleteCouponSlice.rejected, (state, action) => {
@@ -172,6 +175,6 @@ const CouponSlice = createSlice({
   },
 });
 
-export const {} = CouponSlice.actions;
+export const { REMOVE_COUPON } = CouponSlice.actions;
 
 export default CouponSlice.reducer;

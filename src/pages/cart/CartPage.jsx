@@ -15,16 +15,15 @@ import {
   REMOVE_FROM_CART,
   saveCartDBSlice,
 } from "../../redux/features/cart/cartSlice";
+import VerifyCoupon from "../../components/verifyCoupon/VerifyCoupon";
 
 const CartPage = () => {
-  const { id } = useParams();
-
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const { cartItems, cartTotalQuantity, cartTotalAmount } = useSelector(
     (state) => state.cart
   );
+  // For Coupon
+  const { coupon } = useSelector((state) => state.coupon);
 
   //   To add to cart
   const increaseCart = (cart) => {
@@ -66,8 +65,8 @@ const CartPage = () => {
 
   useEffect(() => {
     dispatch(CALCULATE_TOTAL_QUANTITY());
-    dispatch(CALCULATE_SUBTOTAL());
-  }, [dispatch, cartItems]);
+    dispatch(CALCULATE_SUBTOTAL({ coupon }));
+  }, [dispatch, cartItems, coupon]);
 
   return (
     <div>
@@ -182,6 +181,8 @@ const CartPage = () => {
                   Subtotal:
                   <span> ${cartTotalAmount?.toFixed(2)}</span>
                 </h4>
+
+                <VerifyCoupon />
               </div>
             </div>
           </div>

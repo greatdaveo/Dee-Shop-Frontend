@@ -5,18 +5,24 @@ import cartService from "./cartService";
 
 const FRONTEND_URL = import.meta.env.VITE_Frontend_Url;
 
+// Apply discount to cart
+function applyDiscount(cartTotalAmount, discountPercentage) {
+  var discountAmount = (discountPercentage / 100) * cartTotalAmount;
+  var updatedTotal = cartTotalAmount - discountAmount;
+  return updatedTotal;
+}
+
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
-  fixedCartTotalAmount: 0,
+  initialCartTotalAmount: 0,
   isLoading: false,
   isSuccess: false,
   message: "",
 };
-
 
 // For Create and save Cart in DB
 export const saveCartDBSlice = createAsyncThunk(
@@ -177,7 +183,17 @@ const cartSlice = createSlice({
         return a + b;
       }, 0);
 
-      state.cartTotalAmount = totalAmount;
+      state.initialCartTotalAmount = totalAmount;
+      // These are used for the cart summary at the CartPage 
+      if (action.payload && action.payload.coupon !== null) {
+        const discountedTotalAmount = applyDiscount(
+          totalAmount,
+          action.payload.coupon.discount
+        );
+        state.cartTotalAmount = discountedTotalAmount;
+      } else {
+        state.cartTotalAmount = totalAmount;
+      }
     },
   },
 

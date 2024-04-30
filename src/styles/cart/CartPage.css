@@ -78,6 +78,7 @@
     justify-content: space-between;
     padding: 1rem;
     margin: 0 auto;
+    
 }
 
 
@@ -89,12 +90,18 @@
     font-weight: 700;
 }
 
+.cart-cover .cart-checkout {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+      padding: 0.1rem 1rem;
+      margin-top: 0.5rem;
+}
+
 .cart-cover .cart-checkout p {
     margin-bottom: -1.5rem;
 }
 
 .cart-cover .checkout-text {
-    box-shadow: #333;
+    /* box-shadow: #333; */
 }
 
 .cart-cover .checkout-text{
@@ -103,4 +110,5 @@
 
 .cart-cover .checkout-text span {
     color: rgb(238, 51, 51);
+    
 }

@@ -1,0 +1,36 @@
+.v-coupon-cover {
+    margin-top: -2rem;
+}
+
+.v-coupon-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.8rem;
+    gap: 3rem;
+}
+
+.v-coupon-header .p-coupon {
+    font-size: 0.8rem;
+    color: #0066d4;
+    font-weight: 800;
+}
+
+.v-coupon-cover form {
+    /* margin-top: 1rem; */
+    display: flex;
+    align-items: center;
+
+}
+
+.v-coupon-cover form input {
+    padding: 0.5rem 1rem ;
+}
+
+.v-coupon-cover form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #0066d4;
+    color: white;
+    margin-left: 0.5rem;
+}
