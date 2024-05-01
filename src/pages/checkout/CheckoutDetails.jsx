@@ -6,11 +6,14 @@ import { useState } from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  SAVE_BILLING_ADDRESS,
+  SAVE_SHIPPING_ADDRESS,
   selectedBillingAddress,
   selectedPaymentMethod,
   selectedShippingAddress,
 } from "../../redux/features/checkout/checkoutSlice";
 import { useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
+import { toast } from "react-toastify";
 
 const initialAddressState = {
   name: "",
@@ -63,6 +66,25 @@ const CheckoutDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(SAVE_SHIPPING_ADDRESS(shippingAddress));
+    dispatch(SAVE_BILLING_ADDRESS(billingAddress));
+
+    if (paymentMethod === "") {
+      return toast.info("Please select a payment method!");
+      navigate("/cart");
+    }
+    if (paymentMethod === "stripe") {
+      navigate("/checkout-stripe");
+    }
+    if (paymentMethod === "flutterwave") {
+      navigate("/checkout-flutterwave");
+    }
+    if (paymentMethod === "paypal") {
+      navigate("/checkout-paypal");
+    }
+    if (paymentMethod === "wallet") {
+      navigate("/checkout-wallet");
+    }
   };
 
   return (

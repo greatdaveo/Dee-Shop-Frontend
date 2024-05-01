@@ -18,6 +18,7 @@ import ShopProductsPage from "./pages/shop/ShopProductsPage";
 import ProductDetails from "./components/admin/product/productDetaills/ProductDetails";
 import CartPage from "./pages/cart/CartPage";
 import CheckoutDetails from "./pages/checkout/CheckoutDetails";
+import Checkout from "./pages/checkout/Checkout";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -55,6 +56,7 @@ function App() {
           />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout-details" element={<CheckoutDetails />} />
+          <Route path="/checkout-stripe" element={<Checkout />} />
 
           <Route
             path="/admin/*"
