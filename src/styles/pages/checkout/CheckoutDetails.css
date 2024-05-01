@@ -1,0 +1,31 @@
+.checkout-cover {
+  padding: 2rem;
+}
+
+.checkout-cover form {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+
+.checkout-cover form input {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(207, 200, 200);
+  border-radius: 5px;
+  outline: none;
+}
+
+.checkout-cover form .country {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(207, 200, 200);
+  border-radius: 5px;
+}
+
+.checkout-cover form button {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: #0066d4;
+  color: white;
+  border-radius: 3px;
+}
