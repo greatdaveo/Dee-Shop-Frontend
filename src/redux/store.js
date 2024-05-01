@@ -5,7 +5,7 @@ import productReducer from "./features/products/productSlice";
 import filteredReducer from "./features/products/filterSlice";
 import couponReducer from "./features/coupon/CouponSlice";
 import cartReducer from "./features/cart/cartSlice";
-
+import checkoutReducer from "./features/checkout/checkoutSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,5 +15,6 @@ export const store = configureStore({
     filter: filteredReducer,
     coupon: couponReducer,
     cart: cartReducer,
+    checkout: checkoutReducer,
   },
 });

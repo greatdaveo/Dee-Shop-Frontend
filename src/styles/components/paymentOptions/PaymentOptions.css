@@ -1,0 +1,41 @@
+.payment-options {
+    margin-top: -1rem;
+}
+
+.payment-options p {
+    color: gray;
+    font-size: 13px;
+    margin-top: 1.5rem;
+}
+
+.payment-options form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.payment-options form label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid rgb(221, 210, 210);
+    border-radius: 5px;
+    margin-bottom: -0.5rem;
+}
+
+.payment-options form label .radio-span {
+    color: black;
+    font-weight: 300;
+}
+
+.payment-options form input, .payment-options form .radio-span {
+    cursor: pointer;
+}
+
+.payment-options form button {
+    padding: 0.3rem 1rem;
+    border: none;
+    background: #0066d4;
+    color: white;
+    border-radius: 3px;
+}

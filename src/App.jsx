@@ -17,6 +17,7 @@ import PageNotFound from "./pages/404/PageNotFound";
 import ShopProductsPage from "./pages/shop/ShopProductsPage";
 import ProductDetails from "./components/admin/product/productDetaills/ProductDetails";
 import CartPage from "./pages/cart/CartPage";
+import CheckoutDetails from "./pages/checkout/CheckoutDetails";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -53,6 +54,7 @@ function App() {
             element={<ProductDetails />}
           />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout-details" element={<CheckoutDetails />} />
 
           <Route
             path="/admin/*"

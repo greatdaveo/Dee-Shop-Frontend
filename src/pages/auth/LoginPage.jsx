@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/auth/LoginPage.css";
 import NavBar from "../../components/homepage/NavBar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
 import Loader from "../../components/loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, loginSlice } from "../../redux/features/auth/authSlice";
 import Footer from "../../components/Footer";
-import { getCartDBSlice } from "../../redux/features/cart/cartSlice";
+import {
+  getCartDBSlice,
+  saveCartDBSlice,
+} from "../../redux/features/cart/cartSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +22,11 @@ const LoginPage = () => {
   const { isLoading, isLoggedIn, isSuccess } = useSelector(
     (state) => state.auth
   );
+
+  // This is to get the redirect params if the user tries to checkout without being logged in
+  const [urlParams] = useSearchParams();
+  const redirect = urlParams.get("redirect");
+  // console.log(urlParams.get("redirect"));
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -37,12 +45,21 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isSuccess && isLoggedIn) {
+      if (redirect === "cart") {
+        // To sync & save the user's cart to the database immediately the user logs in
+        dispatch(
+          saveCartDBSlice({
+            cartItems: JSON.parse(localStorage.getItem("cartItems")),
+          })
+        );
+        return navigate("/cart");
+      }
       // navigate("/");
       dispatch(getCartDBSlice()); // This has been re-written in  cartSlice
     }
 
     dispatch(RESET_AUTH());
-  }, [isSuccess, isLoggedIn, dispatch, navigate]);
+  }, [isSuccess, isLoggedIn, dispatch, navigate, redirect]);
 
   return (
     <div>

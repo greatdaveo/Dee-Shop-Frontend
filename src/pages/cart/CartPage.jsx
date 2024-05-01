@@ -16,6 +16,7 @@ import {
   saveCartDBSlice,
 } from "../../redux/features/cart/cartSlice";
 import VerifyCoupon from "../../components/verifyCoupon/VerifyCoupon";
+import PaymentOptions from "../../components/paymentOptions/PaymentOptions";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -183,6 +184,9 @@ const CartPage = () => {
                 </h4>
 
                 <VerifyCoupon />
+                <div style={{ borderTop: "1px solid gray" }}>
+                  <PaymentOptions />
+                </div>
               </div>
             </div>
           </div>
