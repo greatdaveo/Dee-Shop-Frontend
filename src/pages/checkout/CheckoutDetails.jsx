@@ -14,6 +14,7 @@ import {
 } from "../../redux/features/checkout/checkoutSlice";
 import { useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
 import { toast } from "react-toastify";
+import CheckoutSummary from "../../components/checkout/CheckoutSummary";
 
 const initialAddressState = {
   name: "",
@@ -93,9 +94,9 @@ const CheckoutDetails = () => {
         <NavBar />
       </div>
       <section className="checkout-cover">
-        <h2>Checkout Details</h2>
-
         <form onSubmit={handleSubmit}>
+          <h2>Checkout Details</h2>
+
           <h3>Shipping Address</h3>
           <label>Recipient Name</label>
           <input
@@ -272,6 +273,9 @@ const CheckoutDetails = () => {
 
           <button type="submit">Proceed To Checkout</button>
         </form>
+        <div>
+          <CheckoutSummary />
+        </div>
       </section>
       <Footer />
     </div>

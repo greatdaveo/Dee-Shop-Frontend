@@ -6,7 +6,7 @@ import {
   getSingleCouponSlice,
 } from "../../redux/features/coupon/CouponSlice";
 
-const CartDiscount = () => {
+export const CartDiscount = () => {
   const { coupon } = useSelector((state) => state.coupon);
   const { cartTotalAmount, initialCartTotalAmount } = useSelector(
     (state) => state.cart
