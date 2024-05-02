@@ -7,6 +7,10 @@
     border-radius: 5px;
 }
 
+.checkout-summary h3 {
+    font-weight: 500;
+}
+
 .summary-cover  {
     display: flex;
     flex-direction: column;

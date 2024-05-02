@@ -4,15 +4,15 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { redirect } from "react-router-dom/dist/umd/react-router-dom.development";
 import { toast } from "react-toastify";
 import CheckoutSummary from "./CheckoutSummary";
+import "../../styles/components/checkout/CheckoutForm.css";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -77,14 +77,13 @@ export default function CheckoutForm() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Checkout</h2>
-
+    <div className="checkout-form-container">
+      <div className="checkout-form-summary">
+        <h3>Checkout</h3>
         <CheckoutSummary />
       </div>
 
-      <div>
+      <div className="stripe-checkout-form">
         <h3>Stripe Checkout</h3>
 
         <form onSubmit={handleSubmit}>
@@ -102,7 +101,11 @@ export default function CheckoutForm() {
             </span>
           </button>
           {/* Show any error or success messages */}
-          {message && <div id="payment-message">{message}</div>}
+          {message && (
+            <div id="payment-message" className="error">
+              {message}
+            </div>
+          )}
         </form>
       </div>
     </div>

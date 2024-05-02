@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const Checkout = () => {
+
   const [message, setMessage] = useState("Initializing checkout...");
   const [clientSecret, setClientSecret] = useState("");
 
@@ -20,26 +21,29 @@ const Checkout = () => {
   const { coupon } = useSelector((state) => state.coupon);
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
   const shipAddress = useSelector(selectedShippingAddress);
-  const description = `DeeShop Payment: by email: ${user.email}, Amount: ${cartTotalAmount}`;
+  const description = `DeeShop Payment: by email: ${user?.email}, Amount: ${cartTotalAmount}`;
 
   // For the extraction of the cart items (id and quantity)
   const productIDs = extractIdAndCartQuantity(cartItems);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        items: productIDs,
-        shipping: shipAddress,
-        description,
-        coupon,
-      }),
-    })
+    fetch(
+      `${import.meta.env.VITE_Backend_Url}/api/order/create-payment-intent`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: productIDs,
+          shipping: shipAddress,
+          description,
+          coupon,
+        }),
+      }
+    )
       .then((res) => {
         if (res.ok) {
-          res.json();
+          return res.json();
         }
         return res.json().then((json) => Promise.reject(json));
       })
@@ -47,6 +51,7 @@ const Checkout = () => {
       .catch((error) => {
         setMessage("Failed to initialize checkout!");
         toast.error(error.message);
+        console.log(error);
       });
   }, []);
 
