@@ -13,9 +13,9 @@ import { toast } from "react-toastify";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const Checkout = () => {
-
   const [message, setMessage] = useState("Initializing checkout...");
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState(""); 
+  
 
   const user = useSelector(authenticatedUser);
   const { coupon } = useSelector((state) => state.coupon);

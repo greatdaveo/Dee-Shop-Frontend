@@ -44,7 +44,7 @@ const NavBar = () => {
               <UserName />
             </NavLink>
 
-            <NavLink to="/orders">
+            <NavLink to="/order-history">
               <button className="order">My Order</button>
             </NavLink>
 
