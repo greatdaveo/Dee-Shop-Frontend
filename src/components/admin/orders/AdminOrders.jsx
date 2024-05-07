@@ -1,12 +1,13 @@
 import React from "react";
 import ListOfOrders from "../../../pages/order/ListOfOrders";
 import { useNavigate } from "react-router";
+import ChangeOrderStatus from "./ChangeOrderStatus";
 
 const AdminOrders = () => {
   const navigate = useNavigate();
 
   const openOrderDetails = (id) => {
-    navigate(`/order-details/${id}`);
+    navigate(`/admin/order-details/${id}`);
   };
 
   return (
@@ -26,8 +27,6 @@ const AdminOrders = () => {
       </div>
 
       <ListOfOrders openOrderDetails={openOrderDetails} />
-
-      
     </div>
   );
 };

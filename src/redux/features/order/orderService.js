@@ -24,10 +24,22 @@ const getSingleOrder = async (id) => {
   return response.data;
 };
 
+// For Admin to Update Order Status
+const updateOrderStatus = async (id, formData) => {
+  const response = await axios.patch(
+    API_URL + "/update-status/" + id,
+    formData
+  );
+  return response.data.message;
+}
+
+
+
 const orderService = {
   createOrder,
   getAllOrders,
   getSingleOrder,
+  updateOrderStatus,
 };
 
 export default orderService;

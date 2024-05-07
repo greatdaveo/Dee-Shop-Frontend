@@ -58,7 +58,23 @@ export const getSingleOrderSlice = createAsyncThunk(
         (error.message && error.response.data && error.message.data.message) ||
         error.message ||
         error.toString();
-      console.log(thunkAPI);
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// For Admin to Update Order Status
+export const updateOrderStatusSlice = createAsyncThunk(
+  "orders/update-status",
+  async ({ id, formData }, thunkAPI) => {
+    try {
+      return await orderService.updateOrderStatus(id, formData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
 
       return thunkAPI.rejectWithValue(message);
     }
@@ -101,7 +117,7 @@ const orderSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         state.orders = action.payload;
-        console.log("All Orders:", action.payload);
+        // console.log("All Orders:", action.payload);
       })
 
       .addCase(getAllOrdersSlice.rejected, (state, action) => {
@@ -121,10 +137,30 @@ const orderSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         state.order = action.payload;
-        console.log("Single Order:", action.payload);
+        // console.log("Single Order:", action.payload);
       })
 
       .addCase(getSingleOrderSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
+
+      // For Admin to Update Order Status
+      .addCase(updateOrderStatusSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(updateOrderStatusSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        toast.success(action.payload);
+        console.log("Updated Order Status:", action.payload);
+      })
+
+      .addCase(updateOrderStatusSlice.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
