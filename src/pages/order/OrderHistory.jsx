@@ -5,19 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import "../../styles/pages/order/OrderHistory.css";
 import { getAllOrdersSlice } from "../../redux/features/order/orderSlice";
-import { AiOutlineEye } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
-import { shortenText } from "../../utils";
 import ReactPaginate from "react-paginate";
+import ListOfOrders from "./ListOfOrders";
 
 const OrderHistory = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, orders } = useSelector((state) => state.order);
-
-  useEffect(() => {
-    dispatch(getAllOrdersSlice());
-  }, [dispatch]);
 
   const openOrderDetails = (id) => {
     navigate(`/order-details/${id}`);
@@ -57,69 +51,7 @@ const OrderHistory = () => {
           </p>
         </div>
 
-        <div className="table">
-          {!isLoading && orders?.length === 0 ? (
-            <p>--No order Found...</p>
-          ) : (
-            <table>
-              <thead>
-                <tr>
-                  <th>s/n</th>
-                  <th>Date</th>
-                  <th>Order ID</th>
-                  <th>Order Amount</th>
-                  <th>Order Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {Array.isArray(orders) ? (
-                  paginatedOrders.map((order, i) => {
-                    return (
-                      <tr key={i} onClick={() => openOrderDetails(order._id)}>
-                        <td>{i + 1}</td>
-                        <td>
-                          {order.orderDate} @ {order.orderTime}
-                        </td>
-                        <td>{order._id}</td>
-                        <td>${order.orderAmount}</td>
-                        <td
-                          className={
-                            order.orderStatus !== "Delivered"
-                              ? "pending"
-                              : "delivered"
-                          }
-                        >
-                          <>{order.orderStatus}</>
-                        </td>
-                      </tr>
-                    );
-                  })
-                ) : (
-                  <p>No Order Found!</p>
-                )}
-              </tbody>
-            </table>
-          )}
-        </div>
-
-        <div className="pagination-container">
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="Next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            pageCount={pageCount}
-            previousLabel="< Prev"
-            renderOnZeroPageCount={null}
-            className="pagination"
-            // containerClassName="pagination-container"
-            pageLinkClassName="pageLinkClassName"
-            previousLinkClassName="previousLinkClassName"
-            nextLinkClassName="nextLinkClassName"
-            activeLinkClassName="activeLinkClassName"
-          />
-        </div>
+        <ListOfOrders openOrderDetails={openOrderDetails} />
       </div>
 
       <Footer />

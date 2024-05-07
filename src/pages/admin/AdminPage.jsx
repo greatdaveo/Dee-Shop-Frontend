@@ -14,6 +14,8 @@ import ViewProducts from "../../components/admin/product/ViewProducts";
 import EditProduct from "../../components/admin/product/EditProduct";
 import AddProduct from "../../components/admin/product/AddProduct";
 import Coupon from "../../components/admin/coupon/Coupon";
+import AdminOrders from "../../components/admin/orders/AdminOrders";
+import AdminOrdersDetails from "../../components/admin/orders/AdminOrdersDetails";
 
 const AdminPage = () => {
   const { isLoading } = useSelector((state) => state.category);
@@ -40,6 +42,11 @@ const AdminPage = () => {
               <Route path="all-products" element={<ViewProducts />} />
               <Route path="edit-product/:id" element={<EditProduct />} />
               <Route path="coupon" element={<Coupon />} />
+              <Route path="/orders" element={<AdminOrders />} />
+              <Route
+                path="/order-details/:id"
+                element={<AdminOrdersDetails />}
+              />
             </Routes>
           </div>
         </div>

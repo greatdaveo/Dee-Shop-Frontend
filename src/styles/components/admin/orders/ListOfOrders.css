@@ -1,0 +1,87 @@
+.order-history {
+    padding: 0.5rem 2rem;
+}
+
+.order-history-header {
+    padding: 1rem 3rem;
+    margin-bottom: -1.5rem;
+}
+
+.table {
+    padding: 1rem 3rem;
+}
+
+.table thead {
+    border-top: 2px solid gold;
+    border-bottom: 2px solid gold;
+}
+
+.table table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.table th, table td {
+      text-align: left;
+      padding: 2px;
+}
+
+.table tr {
+    cursor: pointer;
+}
+
+ .table tr:nth-child(even) {
+    background: #ccc;
+    border-bottom: 1px solid #333;
+
+ }
+
+.table button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.table .td-icons {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.table .pending {
+    color: red;
+}
+
+.table .delivered {
+    color: green;
+}
+
+.pagination-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-self: center;
+    margin: 1.5rem auto;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.pagination-container .previousLinkClassName, .pagination-container .nextLinkClassName {
+    border: 1px solid rgb(26, 20, 20);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.pagination-container .activeLinkClassName {
+    background: var(--primary-color);
+    padding: 0.3rem;
+    border-radius: 5px;
+}
