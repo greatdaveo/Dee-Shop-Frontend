@@ -19,10 +19,8 @@ import ProductDetails from "./components/admin/product/productDetaills/ProductDe
 import CartPage from "./pages/cart/CartPage";
 import CheckoutDetails from "./pages/checkout/CheckoutDetails";
 import CheckoutSuccess from "./pages/checkout/CheckoutSuccess";
-import Order from "./pages/order/Order";
+import OrderHistory from "./pages/order/OrderHistory";
 import OrderDetails from "./pages/order/OrderDetails";
-
-
 
 import Checkout from "./pages/checkout/Checkout";
 
@@ -63,14 +61,9 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout-stripe" element={<Checkout />} />
           <Route path="/checkout-details" element={<CheckoutDetails />} />
-          <Route path="/checkout-success" element={<CheckoutSuccess/>} />
-          <Route path="/order-history" element={<Order/>} />
-          <Route path="/checkout-details/:id" element={<Order/>} />
-
-
-
-
-
+          <Route path="/checkout-success" element={<CheckoutSuccess />} />
+          <Route path="/order-history" element={<OrderHistory />} />
+          <Route path="/order-details/:id" element={<OrderDetails />} />
 
           <Route
             path="/admin/*"

@@ -87,6 +87,7 @@ const ViewProducts = () => {
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         </span>
       </div>
+      
       <div className="table">
         {!isLoading && products.length === 0 ? (
           <p>--No Product Found...</p>

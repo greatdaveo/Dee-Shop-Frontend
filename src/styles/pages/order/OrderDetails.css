@@ -1,0 +1,67 @@
+.order-details-text{
+    padding: 2rem 5rem;
+    line-height: 1.2;
+    
+}
+
+
+.table thead {
+    border-top: 2px solid gold;
+    border-bottom: 2px solid gold;
+}
+
+.table {
+    display: flex;
+    align-items: center;   
+}
+
+.table table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.table th, table td {
+    vertical-align: top;
+      text-align: left;
+      padding: 2px;
+}
+
+/* For the Counting Button */
+
+.table .count-cart-btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0rem;
+    margin-bottom: 0rem;
+    vertical-align: top;
+}
+
+ .table tr:nth-child(even) {
+    background: #ccc;
+    border-bottom: 1px solid #333;
+ }
+
+.table .review-btn {
+    border: none;
+    background: #0066d4;
+    color: white;
+    padding: 0.4rem;
+    margin-top: 1px;
+}
+
+.pdf-btn {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.pdf-btn button {
+    border: none;
+    background: #0066d4;
+    color: white;
+    padding: 0.4rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+}

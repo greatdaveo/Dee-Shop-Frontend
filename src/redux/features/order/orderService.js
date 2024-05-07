@@ -5,37 +5,29 @@ export const API_URL = `${Backend_Url}/api/order/`;
 
 // For Create Coupon
 const createOrder = async (formData) => {
-  const response = await axios.post(API_URL, formData);
+  const response = await axios.post(API_URL + "/create-order", formData);
 
   return response.data.message;
 };
 
 // To Get ALl Orders
-const getAllOrder = async () => {
+const getAllOrders = async () => {
   const response = await axios.get(API_URL + "all-orders");
 
   return response.data;
 };
 
-// To Get Single Orders
-const getSingleOrder = async (couponName) => {
-  const response = await axios.get(API_URL + couponName);
+// To Get Single Order
+const getSingleOrder = async (id) => {
+  const response = await axios.get(API_URL + id);
 
   return response.data;
 };
 
-// To Delete a Order
-const deleteOrder = async (id) => {
-  const response = await axios.delete(API_URL + id);
-
-  return response.data.message;
-};
-
 const orderService = {
   createOrder,
-  getAllOrder,
+  getAllOrders,
   getSingleOrder,
-  deleteOrder,
 };
 
 export default orderService;
