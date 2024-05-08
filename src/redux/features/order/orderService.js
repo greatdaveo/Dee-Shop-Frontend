@@ -5,7 +5,7 @@ export const API_URL = `${Backend_Url}/api/order/`;
 
 // For Create Coupon
 const createOrder = async (formData) => {
-  const response = await axios.post(API_URL + "/create-order", formData);
+  const response = await axios.post(API_URL + "create-order", formData);
 
   return response.data.message;
 };
