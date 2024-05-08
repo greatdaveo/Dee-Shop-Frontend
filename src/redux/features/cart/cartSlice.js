@@ -209,7 +209,7 @@ const cartSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         state.products = action.payload;
-        console.log("Fulfilled created cart:", action.payload);
+        // console.log("Fulfilled created cart:", action.payload);
       })
 
       .addCase(saveCartDBSlice.rejected, (state, action) => {
@@ -237,7 +237,7 @@ const cartSlice = createSlice({
           // if the cart is empty, navigate the user to the home page
           window.location.href = FRONTEND_URL;
         }
-        console.log("Fulfilled cart from DB:", action.payload);
+        // console.log("Fulfilled cart from DB:", action.payload);
       })
 
       .addCase(getCartDBSlice.rejected, (state, action) => {

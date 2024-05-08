@@ -38,7 +38,7 @@ export default function CheckoutForm() {
       orderDate: today.toDateString(),
       orderTime: today.toLocaleTimeString(),
       orderAmount: cartTotalAmount,
-      orderStatus: "Order placed!",
+      orderStatus: "Order placed...",
       cartItems,
       shippingAddress,
       paymentMethod,

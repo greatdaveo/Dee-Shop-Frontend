@@ -23,6 +23,7 @@ import OrderHistory from "./pages/order/OrderHistory";
 import OrderDetails from "./pages/order/OrderDetails";
 
 import Checkout from "./pages/checkout/Checkout";
+import CheckoutWithFlutterwave from "./pages/checkout/CheckoutWithFlutterwave";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -59,7 +60,13 @@ function App() {
             element={<ProductDetails />}
           />
           <Route path="/cart" element={<CartPage />} />
+
           <Route path="/checkout-stripe" element={<Checkout />} />
+          <Route
+            path="/checkout-flutterwave"
+            element={<CheckoutWithFlutterwave />}
+          />
+
           <Route path="/checkout-details" element={<CheckoutDetails />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
           <Route path="/order-history" element={<OrderHistory />} />

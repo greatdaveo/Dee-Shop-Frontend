@@ -17,12 +17,14 @@
 .stripe-checkout-form form {
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 .stripe-checkout-form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     padding: 1rem;
     border-radius: 5px;
+    height: fit-content;
 }
 
 .stripe-checkout-form .error {
@@ -40,5 +42,5 @@
   background: #0066d4;
   color: white;
   border-radius: 3px;
-  
+    width: 100%;
 }
