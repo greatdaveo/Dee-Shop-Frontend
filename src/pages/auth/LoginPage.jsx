@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, loginSlice } from "../../redux/features/auth/authSlice";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer";A
 import {
   getCartDBSlice,
   saveCartDBSlice,

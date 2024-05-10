@@ -15,7 +15,7 @@ import AddProduct from "../../components/admin/product/AddProduct";
 import Coupon from "../../components/admin/coupon/Coupon";
 import AdminOrders from "../../components/admin/orders/AdminOrders";
 import AdminOrdersDetails from "../../components/admin/orders/AdminOrdersDetails";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const AdminPage = () => {
   const { isLoading } = useSelector((state) => state.category);
