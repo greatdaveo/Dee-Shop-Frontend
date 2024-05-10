@@ -24,11 +24,12 @@ import OrderDetails from "./pages/order/OrderDetails";
 
 import Checkout from "./pages/checkout/Checkout";
 import CheckoutWithFlutterwave from "./pages/checkout/CheckoutWithFlutterwave";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   axios.defaults.withCredentials = true;
 
-  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const { isLoading, isLoggedIn, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   // This is to check if the user is logged in
@@ -45,6 +46,7 @@ function App() {
 
   return (
     <div>
+      {isLoading && <Loader />}
       <BrowserRouter>
         <ToastContainer />
 
