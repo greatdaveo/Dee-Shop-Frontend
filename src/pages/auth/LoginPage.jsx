@@ -4,7 +4,7 @@ import NavBar from "../../components/homepage/NavBar";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
-import Loader from "../../components/loader/Loader";
+// import Loader from "../../components/loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, loginSlice } from "../../redux/features/auth/authSlice";
 import Footer from "../../components/Footer";
@@ -63,7 +63,7 @@ const LoginPage = () => {
 
   return (
     <div>
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />}*/}
 
       <section className="login">
         <div className="nav">
