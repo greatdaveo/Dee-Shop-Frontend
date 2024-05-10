@@ -11,7 +11,7 @@ import {
   getCartDBSlice,
   saveCartDBSlice,
 } from "../../redux/features/cart/cartSlice";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

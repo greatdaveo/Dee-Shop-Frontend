@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, registerSlice } from "../../redux/features/auth/authSlice";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const initialState = {
   name: "",
