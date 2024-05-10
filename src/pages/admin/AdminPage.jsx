@@ -7,7 +7,6 @@ import Category from "../../components/admin/category/Category";
 import { Route, Routes } from "react-router";
 import AdminHome from "../../components/admin/AdminHome";
 import { useSelector } from "react-redux";
-import Loader from "../../components/loader/loader";
 import Brand from "../../components/admin/brand/Brand";
 import ProductForm from "../../components/admin/product/ProductForm";
 import ViewProducts from "../../components/admin/product/ViewProducts";
@@ -16,6 +15,7 @@ import AddProduct from "../../components/admin/product/AddProduct";
 import Coupon from "../../components/admin/coupon/Coupon";
 import AdminOrders from "../../components/admin/orders/AdminOrders";
 import AdminOrdersDetails from "../../components/admin/orders/AdminOrdersDetails";
+import Loader from "../../components/loader/Loader";
 
 const AdminPage = () => {
   const { isLoading } = useSelector((state) => state.category);

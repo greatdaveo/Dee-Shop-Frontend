@@ -4,7 +4,6 @@ import NavBar from "../../../homepage/NavBar";
 import Footer from "../../../Footer";
 import { useParams } from "react-router-dom/dist/umd/react-router-dom.development";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../../loader/loader";
 import { editProductSlice } from "../../../../redux/features/products/productSlice";
 import { Link } from "react-router-dom";
 import ProductRating from "../productRating/ProductRating";
@@ -16,6 +15,7 @@ import {
   DECREASE_CART,
   saveCartDBSlice,
 } from "../../../../redux/features/cart/cartSlice";
+import Loader from "../../../loader/Loader";
 
 const ProductDetails = () => {
   const { id } = useParams();

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { validateEmail } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, registerSlice } from "../../redux/features/auth/authSlice";
-// import Loader from "../../components/loader/Loader";
+import Loader from "../../components/loader/Loader";
 
 const initialState = {
   name: "",
@@ -62,8 +62,7 @@ const RegisterPage = () => {
 
   return (
     <div>
-      {/* {isLoading && <Loader />}*/}
-
+      {isLoading && <Loader />}
 
       <section className="register">
         <div className="nav">

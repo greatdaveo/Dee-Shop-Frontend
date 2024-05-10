@@ -4,7 +4,6 @@ import NavBar from "../../components/homepage/NavBar";
 import "../../styles/pages/shop/ShopProductsPage.css";
 import ShopProductFilter from "../../components/shop/ShopProductFilter";
 import ShopProductsList from "../../components/shop/ShopProductsList";
-import Loader from "../../components/loader/loader";
 import { FaCogs } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProductsSlice } from "../../redux/features/products/productSlice";
