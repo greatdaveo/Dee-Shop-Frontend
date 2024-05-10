@@ -9,7 +9,7 @@ import {
   updatePhotoSlice,
   updateUserSlice,
 } from "../../redux/features/auth/authSlice";
-import Loader from "../../components/loader/loader";
+import Loader from "../../components/loader/Loader";
 import { toast } from "react-toastify";
 import { shortenText } from "../../utils";
 
