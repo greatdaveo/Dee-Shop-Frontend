@@ -15,7 +15,7 @@ import {
   DECREASE_CART,
   saveCartDBSlice,
 } from "../../../../redux/features/cart/cartSlice";
-import Loader from "../../../loader/Loader";
+import Loader from "../../../Loader/Loader";
 
 const ProductDetails = () => {
   const { id } = useParams();
