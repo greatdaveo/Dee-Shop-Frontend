@@ -7,12 +7,14 @@ import { RESET_AUTH, logoutSlice } from "../../redux/features/auth/authSlice";
 import { UserName } from "../../pages/profile/ProfilePage";
 import { AdminOnlyLink } from "../../protectedRoute/AdminOnlyRoute";
 import { CALCULATE_TOTAL_QUANTITY } from "../../redux/features/cart/cartSlice";
+import { useState } from "react";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { cartItems, cartTotalQuantity } = useSelector((state) => state.cart);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleLogout = async () => {
     await dispatch(logoutSlice());
@@ -29,14 +31,14 @@ const NavBar = () => {
     <nav>
       <div>{Logo}</div>
 
-      <div>
+      <div className="mobile-nav-1">
         <NavLink to="/shop">Check Items 👁️</NavLink>
         <AdminOnlyLink>
           <NavLink to="/admin/home"> | Admin</NavLink>
         </AdminOnlyLink>
       </div>
 
-      <div>
+      <div className={isMobile ? "mobile" : "desktop"}>
         {isLoggedIn ? (
           <span>
             <NavLink to="/profile" className="username">
@@ -78,6 +80,14 @@ const NavBar = () => {
             <b>{cartTotalQuantity}</b>
           </button>
         </NavLink>
+      </div>
+
+      <div className="mobile-icon" onClick={() => setIsMobile(!isMobile)}>
+        {isMobile ? (
+          <i className="fa-solid fa-xmark"></i>
+        ) : (
+          <i className="fa-solid fa-bars"></i>
+        )}
       </div>
     </nav>
   );

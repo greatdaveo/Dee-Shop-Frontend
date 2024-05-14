@@ -1,5 +1,6 @@
 import "../../styles/components/homepage/Hero.css";
 import NavBar from "../../components/homepage/NavBar";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -9,7 +10,9 @@ const Hero = () => {
       <div className="heroText">
         <h2>Buy online from your home!</h2>
         <p>Unlock the joy of shopping: Order from home and receive at home.</p>
-        <button>Buy Items 🛒</button>
+        <Link to="/shop">
+          <button>Buy Items 🛒</button>
+        </Link>
       </div>
     </main>
   );

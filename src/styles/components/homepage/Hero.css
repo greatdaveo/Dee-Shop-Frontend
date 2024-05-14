@@ -1,7 +1,7 @@
 .hero-container {
   background-image: linear-gradient(rgb(78, 78, 76), hsla(49, 42%, 46%, 0.5)),
     url("../../../assets/components/HeroImage.jpg");
-  height: 90vh;
+  height: 70vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -11,7 +11,7 @@
 
 .heroText {
   color: var(--text-color);
-  padding: 5rem 5rem;
+  padding: 5rem;
   width: 60%;
   margin: 0 auto;
   line-height: 2.5rem;
@@ -38,4 +38,113 @@
   background: var(--text-color);
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1160px) {
+  .hero-container {
+    height: 50vh;
+  }
+
+    .heroText {
+    padding: 3.5rem;
+    width: 75%;
+    margin: 0 auto;
+    line-height: 2rem;
+    margin-top: -2rem;
+  }
+
+  .heroText > h2 {
+    font-size: 2.5rem;
+  }
+
+  .heroText > p {
+    font-size: 1.5rem;
+  }
+
+  .heroText button {
+    padding: 0.5rem 1rem;
+    font-weight: 900;
+  }
+}
+
+@media (max-width: 780px) {
+  .hero-container {
+    height: 35vh;
+  }
+
+    .heroText {
+    padding: 1rem;
+    width: 60%;
+    margin: 0 auto;
+    line-height: 1.5rem;
+    margin-top: -2rem;
+  }
+
+  .heroText > h2 {
+    font-size: 1.8rem;
+  }
+
+  .heroText > p {
+    font-size: 1rem;
+  }
+
+  .heroText button {
+    padding: 0.5rem 1rem;
+    font-weight: 900;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-container {
+    height: 30vh;
+  }
+
+    .heroText {
+    padding: 0.5rem;
+    width: 60%;
+    margin: 0 auto;
+    line-height: 1rem;
+    margin-top: -1rem;
+  }
+
+  .heroText > h2 {
+    font-size: 1.2rem;
+  }
+
+  .heroText > p {
+    font-size: 0.8rem;
+  }
+
+  .heroText button {
+    padding: 0.3rem 0.7rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 550px) {
+  .hero-container {
+    height: 22vh;
+  }
+
+    .heroText {
+    padding: 0.5rem;
+    width: 60%;
+    margin: 0 auto;
+    line-height: 1rem;
+    margin-top: -1rem;
+  }
+
+  .heroText > h2 {
+    font-size: 1rem;
+  }
+
+  .heroText > p {
+    font-size: 0.7rem;
+  }
+
+  .heroText button {
+    padding: 0.2rem 0.3rem;
+    font-weight: 700;
+  }
 }

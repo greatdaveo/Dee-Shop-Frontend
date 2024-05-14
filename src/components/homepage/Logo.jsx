@@ -5,7 +5,7 @@ export const Logo = (
   <div className="logo">
     <Link to="/">
       <h1>
-        Dee
+        Dav
         <span>
           Shop
           <svg

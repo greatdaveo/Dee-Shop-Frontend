@@ -18,3 +18,37 @@
     padding: 0.5rem;
     color: white;
 }
+
+@media (max-width: 650px) {
+    .latest-product-header {
+        padding: 0rem 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: -1.5rem;
+    }
+
+    .latest-product-header p {
+        font-size: 1.2rem;
+    }
+
+    .latest-product-header a {
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .latest-product-header {
+        padding: 0rem 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: -1.5rem;
+    }
+
+    .latest-product-header p {
+        font-size: 0.9rem;
+    }
+
+    .latest-product-header a {
+        padding: 0.1rem;
+        font-size: 0.7rem;
+    }
+}

@@ -1,15 +1,39 @@
 .home-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    background: rgb(22, 22, 21);
-    color: var(--text-color);
-    align-content: center;
-    padding: 1rem 3rem;
-    gap: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: rgb(22, 22, 21);
+  color: var(--text-color);
+  align-content: center;
+  padding: 1rem 3rem;
+  gap: 3rem;
 }
 
 .home-info-data > h3 {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;    
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@media (max-width: 1050px) {
+  .home-info {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 590px) {
+  .home-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .home-info-data {
+    border-bottom: 1px solid gray;
+    width: 70vw;
+    margin: 0 auto;
+  }
+
+  .home-info-data:last-child {
+    border-bottom: none;
+  }
 }

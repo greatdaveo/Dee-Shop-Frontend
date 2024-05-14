@@ -44,9 +44,10 @@ function App() {
     }
   }, [dispatch, isLoggedIn, user]);
 
+  // {isLoading && <Loader />}
+
   return (
     <div>
-      {isLoading && <Loader />}
       <BrowserRouter>
         <ToastContainer />
 

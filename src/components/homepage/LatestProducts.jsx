@@ -7,11 +7,7 @@ const LatestProducts = () => {
     <div>
       <div className="latest-product-header">
         <p>Latest Products</p>
-        <Link>Shop Now 🛍️ </Link>
-      </div>
-
-      <div> 
-        
+        <Link to="/shop">Shop Now 🛍️ </Link>
       </div>
     </div>
   );

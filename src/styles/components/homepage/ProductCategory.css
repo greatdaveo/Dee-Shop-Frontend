@@ -27,7 +27,6 @@
     height: 190px;
 }
 
-
 .p-cat-container button {
     padding: 0.2rem;
   background: gray;
@@ -36,3 +35,16 @@
     margin: 0.5rem auto;
 }
 
+@media (max-width: 980px) {
+        .p-cat-item {
+        grid-template-columns: 1fr 1fr;    
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .p-cat-item {
+    grid-template-columns: 1fr;    
+    gap: 2rem;
+}
+}

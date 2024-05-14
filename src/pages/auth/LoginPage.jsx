@@ -54,7 +54,7 @@ const LoginPage = () => {
         );
         return navigate("/cart");
       }
-      // navigate("/");
+      navigate("/");
       dispatch(getCartDBSlice()); // This has been re-written in  cartSlice
     }
 
