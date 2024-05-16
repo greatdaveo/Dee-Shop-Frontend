@@ -7,6 +7,7 @@ import { validateEmail } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, registerSlice } from "../../redux/features/auth/authSlice";
 import Loader from "../../components/Loader/Loader";
+import Footer from "../../components/Footer";
 
 const initialState = {
   name: "",
@@ -107,13 +108,19 @@ const RegisterPage = () => {
             />
 
             <button className="btn">Register</button>
+            <p style={{ textAlign: "center", margin: "0" }}>OR</p>
+            <button className="g-btn">
+              <i class="fa-brands fa-google"></i> Sign Up with Google
+            </button>
           </form>
 
-          <p>
+          <p style={{ fontSize: "0.8rem" }}>
             Already have an account? <Link to="/login">Sign In 😁</Link>
           </p>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

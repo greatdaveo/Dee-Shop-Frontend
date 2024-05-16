@@ -22,13 +22,17 @@ nav .mobile {
   top: 0%;
   right: 0%;
   height: fit-content;
-  /* background: #000; */
   background: rgb(22, 22, 21);
+  border-bottom-left-radius: 10px;
+  background: var(--secondary-bg);
   padding: 3rem 1rem;
   padding-top: 5rem;
   padding-right: 5rem;
   gap: 1rem;
   transition: all 0.9s ease-in-out;
+  height: fit-content;
+  width: 30vw;
+  z-index: 99;
 }
 
 nav .mobile > span {

@@ -15,12 +15,13 @@ button {
   cursor: pointer;
 }
 
-ul, li {
-  list-style: none;  
+ul,
+li {
+  list-style: none;
 }
 
 :root {
   --primary-color: gold;
-  --text-color:  white;
+  --text-color: white;
+  --secondary-bg: #2e2d2d;
 }
-

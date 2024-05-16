@@ -1,15 +1,20 @@
+.register {
+  margin-bottom: 2rem;
+}
+
 .register .nav {
-  background: #2e2d2d;
+  background: var(--secondary-bg);
+  margin-bottom: 2rem;
 }
 
 .form-cover {
   background: var(--primary-color);
-  width: 50vw;
+  max-width: 50vw;
   height: fit-content;
   margin: 0 auto;
   padding: 2.5rem 3rem;
   margin-top: 1rem;
-
+  border-radius: 10px;
 }
 
 .register form {
@@ -23,13 +28,27 @@
 }
 
 .register .btn {
-    padding: 0.8rem;
-    font-weight: bold;
-    background: blue;
-    border: none;
-    color: white;
+  padding: 0.8rem;
+  font-weight: bold;
+  background: blue;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.register .g-btn {
+  padding: 0.8rem;
+  font-weight: bold;
+  background: blue;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.register .g-btn i {
+  color: red;
 }
 
 .form-cover a {
-    color: red;
+  color: red;
 }
