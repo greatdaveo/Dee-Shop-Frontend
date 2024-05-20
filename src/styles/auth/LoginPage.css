@@ -43,6 +43,7 @@
   border: none;
   color: white;
   cursor: pointer;
+  width: 100%;
 }
 
 .login .g-btn i {

@@ -12,6 +12,7 @@ import {
   saveCartDBSlice,
 } from "../../redux/features/cart/cartSlice";
 import Loader from "../../components/Loader/Loader";
+import OAuth from "../../components/GoogleAuth/OAuth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -95,10 +96,14 @@ const LoginPage = () => {
             <p style={{ textAlign: "center", margin: "0" }}>
               <hr />
             </p>
-
+            {/* 
             <button className="g-btn">
+               Sign In with Google
+            </button> */}
+
+            <OAuth>
               <i class="fa-brands fa-google"></i> Sign In with Google
-            </button>
+            </OAuth>
           </form>
 
           <p style={{ fontSize: "0.8rem" }}>

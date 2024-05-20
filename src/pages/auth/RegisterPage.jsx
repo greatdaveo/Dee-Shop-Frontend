@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, registerSlice } from "../../redux/features/auth/authSlice";
 import Loader from "../../components/Loader/Loader";
 import Footer from "../../components/Footer";
+import OAuth from "../../components/GoogleAuth/OAuth";
 
 const initialState = {
   name: "",
@@ -112,9 +113,13 @@ const RegisterPage = () => {
             <p style={{ textAlign: "center", margin: "0" }}>
               <hr />
             </p>
-            <button className="g-btn">
+            {/* <button className="g-btn">
               <i class="fa-brands fa-google"></i> Sign Up with Google
-            </button>
+            </button> */}
+
+            <OAuth>
+              <i class="fa-brands fa-google"></i> Sign Up with Google
+            </OAuth>
           </form>
 
           <p style={{ fontSize: "0.8rem" }}>

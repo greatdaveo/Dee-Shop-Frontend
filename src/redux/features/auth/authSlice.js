@@ -11,6 +11,22 @@ const initialState = {
   message: "",
 };
 
+export const googleAuthSlice = createAsyncThunk(
+  "auth/google",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.registerService(userData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.message.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // To register the user
 export const registerSlice = createAsyncThunk(
   "auth/register",
@@ -144,6 +160,27 @@ const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
+      // For the User Google Authentication
+      .addCase(googleAuthSlice.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(googleAuthSlice.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("Your registration is now successful!");
+      })
+
+      .addCase(googleAuthSlice.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.error(action.payload);
+      })
+
       // For the User Registration
       .addCase(registerSlice.pending, (state) => {
         state.isLoading = true;

@@ -26,7 +26,6 @@ const HomePage = () => {
       <CarouselProducts products={products} />
       <HomeInfo />
       <LatestProducts />
-
       <CarouselProducts products={products} />
       <ProductCategory />
       <Footer />

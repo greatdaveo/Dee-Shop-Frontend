@@ -40,6 +40,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+
+  .p-cat-container .categories h1 {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 640px) {
