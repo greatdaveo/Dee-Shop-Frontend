@@ -3,7 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyARAZdlU58MOqnegJ-ADlvZSjMCXG6czls",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "dav-shop-online-store.firebaseapp.com",
   projectId: "dav-shop-online-store",
   storageBucket: "dav-shop-online-store.appspot.com",
