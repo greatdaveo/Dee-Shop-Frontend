@@ -71,6 +71,10 @@ const RegisterPage = () => {
         </div>
 
         <div className="form-cover">
+          <h4 style={{ textAlign: "center", color: "gray" }}>
+            Create an account
+          </h4>
+
           <form className="form" onSubmit={handleRegister}>
             <input
               type="text"

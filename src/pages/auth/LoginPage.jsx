@@ -71,6 +71,10 @@ const LoginPage = () => {
         </div>
 
         <div className="form-cover">
+          <h4 style={{ textAlign: "center", color: "gray" }}>
+            Login to you account
+          </h4>
+
           <form className="form" onSubmit={handleLogin}>
             <input
               type="text"

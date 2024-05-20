@@ -7,9 +7,9 @@
   margin-bottom: 2rem;
 }
 
-.form-cover {
+.login .form-cover {
   background: var(--primary-color);
-  width: 30vw;
+  width: 50vw;
   height: fit-content;
   margin: 0 auto;
   padding: 3rem;
