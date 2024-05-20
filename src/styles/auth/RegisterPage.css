@@ -9,7 +9,7 @@
 
 .form-cover {
   background: var(--primary-color);
-  max-width: 50vw;
+  width: 30vw;
   height: fit-content;
   margin: 0 auto;
   padding: 2.5rem 3rem;

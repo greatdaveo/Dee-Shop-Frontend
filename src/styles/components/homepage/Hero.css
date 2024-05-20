@@ -1,31 +1,62 @@
 .hero-container {
-  background-image: linear-gradient(rgb(78, 78, 76), hsla(49, 42%, 46%, 0.5)),
-    url("../../../assets/components/HeroImage.jpg");
-  height: 70vh;
-  background-repeat: no-repeat;
+  /* background-image: linear-gradient(rgb(78, 78, 76), hsla(49, 42%, 46%, 0.5)),
+    url("../../../assets/components/HeroImage.jpg"); */
+  height: 60vh;
+  /* background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-position-x: 67%;
-  background-position-y: 10%;
+  background-position-y: 5%; */
+  /* background: var(--secondary-bg); */
 }
 
 .heroText {
-  color: var(--text-color);
-  padding: 5rem;
-  width: 60%;
+  color: var(--secondary-text-color);
+  width: 40%;
   margin: 0 auto;
-  line-height: 2.5rem;
-  margin-top: -2rem;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 6rem;
+  line-height: 1.2;
 }
 
 .heroText > h2 {
-  font-size: 3rem;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-bg);
 }
 
 .heroText > p {
-  font-size: 2rem;
+  font-size: 1.2rem;
+  width: 70%;
+  margin: 0 auto;
+  color: var(--secondary-bg);
 }
 
+.hero-container .hero-search {
+  padding: 1rem;
+}
+
+.hero-container .hero-search input {
+  padding: 1rem;
+  width: 50%;
+  outline: none;
+  border: none;
+  background: rgb(243, 234, 234);
+}
+
+.hero-container .hero-search input::placeholder {
+  font-size: 1rem;
+}
+
+.hero-container .hero-search span {
+  padding: 0.76rem;
+  font-size: 1rem;
+  background: var(--primary-color);
+  color: var(--secondary-bg);
+}
+
+/* 
 .heroText button {
   background: var(--primary-color);
   color: var(--text-color);
@@ -38,20 +69,69 @@
   background: var(--text-color);
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
-}
+} */
 
 /* MEDIA QUERY */
-@media (max-width: 1160px) {
+@media (max-width: 1255px) {
+  .hero-container {
+    height: 60vh;
+  }
+
+  .heroText {
+    width: 50%;
+  }
+
+  .hero-container .hero-search input {
+    padding: 1rem;
+  }
+
+  .hero-container .hero-search span {
+    padding: 0.85rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1085px) {
   .hero-container {
     height: 50vh;
   }
 
   .heroText {
-    padding: 3.5rem;
-    width: 75%;
-    margin: 0 auto;
-    line-height: 2rem;
-    margin-top: -2rem;
+    width: 65%;
+  }
+
+  .heroText > h2 {
+    font-size: 3rem;
+  }
+
+  .heroText > p {
+    font-size: 0.9rem;
+    width: 65%;
+  }
+
+  .hero-container .hero-search input {
+    width: 40%;
+    padding: 0.9rem;
+  }
+
+  .hero-container .hero-search input::placeholder {
+    font-size: 0.8rem;
+  }
+
+  .hero-container .hero-search span {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 835px) {
+  .hero-container {
+    height: 40vh;
+  }
+
+  .heroText {
+    width: 70%;
+    margin-top: 4rem;
   }
 
   .heroText > h2 {
@@ -59,26 +139,49 @@
   }
 
   .heroText > p {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
+    width: 60%;
   }
 
-  .heroText button {
-    padding: 0.5rem 1rem;
-    font-weight: 900;
+  .hero-container .hero-search input {
+    width: 40%;
+    padding: 0.8rem;
+  }
+
+  .hero-container .hero-search span {
+    padding: 0.7rem;
+    font-size: 0.85rem;
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 645px) {
   .hero-container {
     height: 35vh;
   }
 
   .heroText {
-    padding: 1rem;
-    width: 60%;
-    margin: 0 auto;
-    line-height: 1.5rem;
-    margin-top: -2rem;
+    width: 70%;
+    margin-top: 3rem;
+  }
+
+  .heroText > h2 {
+    font-size: 2.2rem;
+  }
+
+  .heroText > p {
+    font-size: 0.8rem;
+    width: 70%;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-container {
+    height: 32vh;
+  }
+
+  .heroText {
+    width: 80%;
+    margin-top: 3rem;
   }
 
   .heroText > h2 {
@@ -86,65 +189,21 @@
   }
 
   .heroText > p {
-    font-size: 1rem;
+    font-size: 0.7rem;
+    width: 70%;
   }
 
-  .heroText button {
-    padding: 0.5rem 1rem;
-    font-weight: 900;
-  }
-}
-
-@media (max-width: 700px) {
-  .hero-container {
-    height: 30vh;
+  .hero-container .hero-search input {
+    width: 40%;
+    padding: 0.7rem;
   }
 
-  .heroText {
-    padding: 0.5rem;
-    width: 60%;
-    margin: 0 auto;
-    line-height: 1rem;
-    margin-top: -1rem;
-  }
-
-  .heroText > h2 {
-    font-size: 1.2rem;
-  }
-
-  .heroText > p {
-    font-size: 0.8rem;
-  }
-
-  .heroText button {
-    padding: 0.3rem 0.7rem;
-    font-weight: 700;
-  }
-}
-
-@media (max-width: 550px) {
-  .hero-container {
-    height: 25vh;
-  }
-
-  .heroText {
-    padding: 0.5rem;
-    width: 60%;
-    margin: 0 auto;
-    line-height: 1rem;
-    margin-top: -1rem;
-  }
-
-  .heroText > h2 {
-    font-size: 1rem;
-  }
-
-  .heroText > p {
+  .hero-container .hero-search input::placeholder {
     font-size: 0.7rem;
   }
 
-  .heroText button {
-    padding: 0.2rem 0.3rem;
-    font-weight: 700;
+  .hero-container .hero-search span {
+    padding: 0.55rem;
+    font-size: 0.85rem;
   }
 }

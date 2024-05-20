@@ -88,14 +88,17 @@ const LoginPage = () => {
             />
 
             <button className="btn">Login</button>
-            <p style={{ textAlign: "center", margin: "0" }}>OR</p>
+            <p style={{ textAlign: "center", margin: "0" }}>
+              <hr />
+            </p>
+
             <button className="g-btn">
               <i class="fa-brands fa-google"></i> Sign In with Google
             </button>
           </form>
 
           <p style={{ fontSize: "0.8rem" }}>
-            Don't have an account? <Link to="/register">Sign up 😁</Link>
+            Don't have an account? <Link to="/register">Sign up </Link>
           </p>
         </div>
       </section>

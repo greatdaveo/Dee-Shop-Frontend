@@ -80,7 +80,6 @@ const RegisterPage = () => {
               value={name}
               onChange={handleInputChange}
             />
-
             <input
               type="text"
               placeholder="Email"
@@ -97,7 +96,6 @@ const RegisterPage = () => {
               value={password}
               onChange={handleInputChange}
             />
-
             <input
               type="password"
               placeholder="Confirm Password"
@@ -106,16 +104,17 @@ const RegisterPage = () => {
               value={confirmPassword}
               onChange={handleInputChange}
             />
-
             <button className="btn">Register</button>
-            <p style={{ textAlign: "center", margin: "0" }}>OR</p>
+            <p style={{ textAlign: "center", margin: "0" }}>
+              <hr />
+            </p>
             <button className="g-btn">
               <i class="fa-brands fa-google"></i> Sign Up with Google
             </button>
           </form>
 
           <p style={{ fontSize: "0.8rem" }}>
-            Already have an account? <Link to="/login">Sign In 😁</Link>
+            Already have an account? <Link to="/login">Sign In</Link>
           </p>
         </div>
       </section>

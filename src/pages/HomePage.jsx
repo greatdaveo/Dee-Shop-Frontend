@@ -23,6 +23,7 @@ const HomePage = () => {
   return (
     <div>
       <Hero />
+      <CarouselProducts products={products} />
       <HomeInfo />
       <LatestProducts />
 

@@ -3,14 +3,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0rem 3rem;
-  /* background: black; */
+  background: var(--secondary-bg);
 }
 
+/* MOBILE RESPONSIVENESS */
 nav .mobile-icon {
   display: none;
   position: relative;
   z-index: 99;
-  /* top: 4%; */
   right: 0%;
   cursor: pointer;
 }
@@ -23,23 +23,47 @@ nav .mobile {
   right: 0%;
   height: fit-content;
   background: rgb(22, 22, 21);
-  border-bottom-left-radius: 10px;
   background: var(--secondary-bg);
-  padding: 3rem 1rem;
-  padding-top: 5rem;
-  padding-right: 5rem;
   gap: 1rem;
   transition: all 0.9s ease-in-out;
   height: fit-content;
-  width: 30vw;
+  width: 100vw;
+  margin: 0 auto;
   z-index: 99;
+  padding-bottom: 2rem;
 }
 
-nav .mobile > span {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+nav .mobile a {
+  /* border-bottom: 1px solid gold; */
+  padding-left: 2rem;
+  margin-top: 1rem;
 }
+
+nav .mobile a button {
+  border-bottom: 1px solid gold;
+  width: 85vw;
+  text-align: start;
+}
+
+nav .mobile > a:first-child {
+  margin-top: 3rem;
+  margin-bottom: -2rem;
+}
+
+nav .mobile span {
+  margin-top: 2rem;
+}
+
+nav .mobile span a button {
+  margin-top: 1rem;
+}
+
+nav .mobile span .cart {
+  top: -1rem;
+  margin-top: -1rem;
+}
+
+/* /////////////////////////////////////////////////// */
 
 nav > :nth-child(2) a {
   color: var(--text-color);
@@ -118,10 +142,19 @@ nav .cart b {
   nav .mobile-nav-1 {
     display: none;
   }
+
+  nav a .login {
+    margin-top: -2rem;
+    padding-top: -2rem;
+  }
+
+  /* nav a button {
+    margin-top: -2rem;
+  } */
 }
 
 @media (max-width: 555px) {
-  nav {
+  /* nav {
     padding: 0rem 1.5rem;
     margin-top: 0;
   }
@@ -137,5 +170,5 @@ nav .cart b {
 
   nav .mobile > span {
     gap: 0.4rem;
-  }
+  } */
 }
