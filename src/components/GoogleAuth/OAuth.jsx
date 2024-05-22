@@ -8,7 +8,6 @@ import {
   registerSlice,
 } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
-import { auth } from "../../../firebase/firebase";
 
 const OAuth = ({ children }) => {
   const dispatch = useDispatch();

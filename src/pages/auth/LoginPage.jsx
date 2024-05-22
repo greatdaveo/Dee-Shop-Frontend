@@ -12,7 +12,6 @@ import {
   saveCartDBSlice,
 } from "../../redux/features/cart/cartSlice";
 import Loader from "../../components/Loader/Loader";
-import OAuth from "../../components/GoogleAuth/OAuth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -62,6 +61,41 @@ const LoginPage = () => {
     dispatch(RESET_AUTH());
   }, [isSuccess, isLoggedIn, dispatch, navigate, redirect]);
 
+  // FOR GOOGLE AUTH
+  const handleGoogleAuth = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { access_token } = await authWithGoogle();
+      console.log("Google Access Token:", access_token);
+
+      let formData = { access_token };
+
+      const response = await fetch(
+        `${import.meta.env.VITE_Backend_Url}/api/user/google-auth`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to authenticate with Google");
+      } else {
+        navigate("/create-blog");
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      toast.error(err);
+      return console.log(err);
+    }
+  };
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -96,14 +130,10 @@ const LoginPage = () => {
             <p style={{ textAlign: "center", margin: "0" }}>
               <hr />
             </p>
-            {/* 
-            <button className="g-btn">
-               Sign In with Google
-            </button> */}
 
-            <OAuth>
+            <button className="g-btn" onClick={handleGoogleAuth}>
               <i class="fa-brands fa-google"></i> Sign In with Google
-            </OAuth>
+            </button>
           </form>
 
           <p style={{ fontSize: "0.8rem" }}>
