@@ -1,22 +1,22 @@
 .search-container {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    position: relative;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  position: relative;
 }
 
 .search-container i {
-    display: flex;
-    position: absolute;
-    left: 0.8rem;
+  display: flex;
+  position: absolute;
+  left: 0.8rem;
 }
 
 .search-container input {
-    outline: none;
-    padding: 0.4rem 0rem;
-    border-radius: 10px;
-    padding-left: 1.6rem;
-    /* border-color: rgb(207, 197, 197); */
+  outline: none;
+  padding: 0.4rem 0rem;
+  border-radius: 10px;
+  padding-left: 1.6rem;
+  /* border-color: rgb(207, 197, 197); */
 }
 
 .search-post .input-container {
@@ -27,5 +27,13 @@
 
 .input-container i {
   position: absolute;
+}
 
+@media (max-width: 970px) {
+  .search-container input {
+    outline: none;
+    padding: 0.2rem 0rem;
+    border-radius: 5px;
+    padding-left: 1.6rem;
+  }
 }

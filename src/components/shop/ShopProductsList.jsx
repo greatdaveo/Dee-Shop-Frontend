@@ -65,6 +65,7 @@ const ShopProductsList = ({ products }) => {
           <p>
             <b>{currentItems.length} ~ Products Found</b>
           </p>
+          
         </div>
 
         <div>
