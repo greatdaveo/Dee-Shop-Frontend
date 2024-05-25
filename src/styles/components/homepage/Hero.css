@@ -1,7 +1,7 @@
 .hero-container {
   /* background-image: linear-gradient(rgb(78, 78, 76), hsla(49, 42%, 46%, 0.5)),
     url("../../../assets/components/HeroImage.jpg"); */
-  height: 60vh;
+  height: 70vh;
   /* background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -35,6 +35,8 @@
 
 .hero-container .hero-search {
   padding: 1rem;
+  z-index: 99;
+  margin-bottom: 1rem;
 }
 
 .hero-container .hero-search input {
